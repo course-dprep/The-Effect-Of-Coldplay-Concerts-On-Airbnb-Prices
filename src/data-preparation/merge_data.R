@@ -1,9 +1,13 @@
 # Load datasets into R 
-df1 <- read.csv("./gen/data-preparation/input/dataset1.csv")
-df2 <- read.csv("./gen/data-preparation/input/dataset2.csv")
+Dallas_listings <- read_csv('data/Dallas_listings.csv')
+Dallas_reviews <- read_csv('data/Dallas_reviews.csv')
 
-# Merge on id
-df_merged <- merge(df1,df2,by="id")
+install.packages('dplyr')
+library(dplyr)
 
-# Save merged data
-save(df_merged,file="./gen/data-preparation/temp/data_merged.RData")
+
+#join datasets
+Dallas_reviews <- Dallas_reviews %>%
+  rename('id' = listing_id)
+
+Dallas <- left_join(Dallas_listings, Dallas_reviews, by = 'id')
