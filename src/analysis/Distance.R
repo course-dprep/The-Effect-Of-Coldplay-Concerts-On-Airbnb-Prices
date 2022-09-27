@@ -15,3 +15,6 @@ earth.dist <- function (long1, lat1, long2, lat2)
   d <- R * c
   return(d)
 }
+
+
+mexico$distance <- earth.dist(mexico$longitude, mexico$latitude, *insert long and lat here*)
