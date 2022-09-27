@@ -7,3 +7,4 @@ reg1 <- feols(price ~ distance +
                 distance:type, 
               data = Dallas_listings)
 tidy(reg1, conf.int = TRUE)
+
