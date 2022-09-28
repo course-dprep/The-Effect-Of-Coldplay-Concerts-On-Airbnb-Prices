@@ -16,3 +16,12 @@ MexicoDuringConcert <- subset(Mexico$last_review, select = ("06-04-2022":"06-04-
 DallasDuringConcert <- Dallas %>%
   filter(between(last_review, as.Date('2022-04-06'), as.Date('2022-04-06'))) %>%
   arrange(last_review) 
+
+#clean price column 
+Dallas$price <- gsub('[$]', '', Dallas$price)
+Dallas$price <- gsub('[,]', '', Dallas$price)
+Dallas$price <- gsub('[.]', '', Dallas$price)
+Dallas$price <- as.numeric(Dallas$price)
+Dallas$price <- Dallas$price / 100
+
+
