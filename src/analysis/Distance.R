@@ -16,5 +16,7 @@ earth.dist <- function (long1, lat1, long2, lat2)
   return(d)
 }
 
+#coordinates of stadium are -96.452099, 32.462819
 
-mexico$distance <- earth.dist(mexico$longitude, mexico$latitude, *insert long and lat here*)
+Dallas$distance <- earth.dist(Dallas$longitude, Dallas$latitude, -96.452099, 32.462819)
+View(Dallas$distance)
