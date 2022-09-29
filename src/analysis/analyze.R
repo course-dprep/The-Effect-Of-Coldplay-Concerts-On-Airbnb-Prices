@@ -14,18 +14,14 @@ tidy(reg1, conf.int = TRUE)
 
 
 #create graph with price 
-Mexico %>% ß
-  fil
+Mexico %>% filter(date >= "2022-04-03") %>%
+  filter(date <= "2022-04-07") %>%
          ggplot(aes(x = date,
                     y = price,
-                    size = price, 
+                    size = distance, 
                     )) + 
            geom_point()
 
          
 
          
-range(Mexico$date, asc)
-
-
-
