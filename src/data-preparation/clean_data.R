@@ -27,9 +27,6 @@ ChicagoDuringConcert <- Chicago %>%
   filter(between(date, as.Date('2022-05-28'), as.Date('2022-05-29'))) %>%
   arrange(date) 
 
-
-
-
 #clean price column Dallas (not pretty but it works)
 Dallas$price <- gsub('[$]', '', Dallas$price)
 Dallas$price <- gsub('[,]', '', Dallas$price)
@@ -51,5 +48,7 @@ Mexico$price <- gsub('[.]', '', Mexico$price)
 Mexico$price <- as.numeric(Mexico$price)
 Mexico$price <- Mexico$price / 100
 
-
-
+#create dummy variable for is host superhost 
+DallasDuringConcert$host_is_superhost <- transform(as.numeric(DallasDuringConcert$host_is_superhost))
+MexicoDuringConcert$host_is_superhost <- transform(as.numeric(MexicoDuringConcert$host_is_superhost))
+ChicagoDuringConcert$host_is_superhost <- transform(as.numeric(ChicagoDuringConcert$host_is_superhost))
