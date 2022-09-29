@@ -24,25 +24,25 @@ Chicago$DuringConcert <- ifelse(Chicago$date == as.Date("2022-05-28") | Chicago$
 
 
 #clean price column Dallas (not pretty but it works)
-DallasDuringConcert$price <- gsub('[$]', '', DallasDuringConcert$price)
-DallasDuringConcert$price <- gsub('[,]', '', DallasDuringConcert$price)
-DallasDuringConcert$price <- gsub('[.]', '', DallasDuringConcert$price)
-DallasDuringConcert$price <- as.numeric(DallasDuringConcert$price)
-DallasDuringConcert$price <- DallasDuringConcert$price / 100
+Dallas$price <- gsub('[$]', '', Dallas$price)
+Dallas$price <- gsub('[,]', '', Dallas$price)
+Dallas$price <- gsub('[.]', '', Dallas$price)
+Dallas$price <- as.numeric(Dallas$price)
+Dallas$price <- Dallas$price / 100
 
 #clean price column Chicago (not pretty but it works)
-ChicagoDuringConcert$price <- gsub('[$]', '', ChicagoDuringConcert$price)
-ChicagoDuringConcert$price <- gsub('[,]', '', ChicagoDuringConcert$price)
-ChicagoDuringConcert$price <- gsub('[.]', '', ChicagoDuringConcert$price)
-ChicagoDuringConcert$price <- as.numeric(ChicagoDuringConcert$price)
-ChicagoDuringConcert$price <- ChicagoDuringConcert$price / 100
+Chicago$price <- gsub('[$]', '', Chicago$price)
+Chicago$price <- gsub('[,]', '', Chicago$price)
+Chicago$price <- gsub('[.]', '', Chicago$price)
+Chicago$price <- as.numeric(Chicago$price)
+Chicago$price <- Chicago$price / 100
 
 #clean price column Mexico (not pretty but it works)
-MexicoDuringConcert$price <- gsub('[$]', '', MexicoDuringConcert$price)
-MexicoDuringConcert$price <- gsub('[,]', '', MexicoDuringConcert$price)
-MexicoDuringConcert$price <- gsub('[.]', '', MexicoDuringConcert$price)
-MexicoDuringConcert$price <- as.numeric(MexicoDuringConcert$price)
-MexicoDuringConcert$price <- MexicoDuringConcert$price / 100
+Mexico$price <- gsub('[$]', '', Mexico$price)
+Mexico$price <- gsub('[,]', '', Mexico$price)
+Mexico$price <- gsub('[.]', '', Mexico$price)
+Mexico$price <- as.numeric(Mexico$price)
+Mexico$price <- Mexico$price / 100
 
 #create dummy variable for is host_superhost 
 DallasDuringConcert$host_is_superhost <- transform(as.numeric(DallasDuringConcert$host_is_superhost))
