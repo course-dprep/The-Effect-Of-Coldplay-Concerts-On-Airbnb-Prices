@@ -1,11 +1,15 @@
 #shape of the regression test 
 
 install.packages('fixest')
-library('fixest')
+install.packages('broom')
+library(fixest)
+library(broom)
+library(tidyr)
 
-reg1 <- feols(price ~ distance + 
-                type + 
-                distance:type, 
-              data = Dallas_listings)
+reg1 <-   feols(price ~ distance + 
+                  accommodates,
+              data = MexicoDuringConcert)
 tidy(reg1, conf.int = TRUE)
+
+
 
