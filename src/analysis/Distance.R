@@ -18,15 +18,13 @@ earth.dist <- function (long1, lat1, long2, lat2)
 
 #coordinates of Cotton Bowl stadium (Dalles) are -96.452099, 32.462819
 
-Dallas$distance <- earth.dist(Dallas$longitude, Dallas$latitude, -96.452099, 32.462819)
-View(Dallas$distance)
+DallasDuringConcert$distance <- earth.dist(DallasDuringConcert$longitude, DallasDuringConcert$latitude, -96.452099, 32.462819)
 
 #coordinates of Foro Sol (Mexico City) are -99.052724, 19.241055 
 
-Mexico$distance <- earth.dist(Mexico$longitude, Mexico$latitude, -99.052724, 19.241055)
-view(Mexico$distance)
+MexicoDuringConcert$distance <- earth.dist(MexicoDuringConcert$longitude, MexicoDuringConcert$latitude, -99.052724, 19.241055)
 
 #coordinates of Soldier Field (Chicago) are -87.617256, 41.862366
 
-Chicago$distance <- earth.dist(Chicago$longitude, Chicago$latitude, -87.617256, 41.862366)
-view(Chicago$distance)
+ChicagoDuringConcert$distance <- earth.dist(ChicagoDuringConcert$longitude, ChicagoDuringConcert$latitude, -87.617256, 41.862366)
+
