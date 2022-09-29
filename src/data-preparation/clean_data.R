@@ -1,31 +1,27 @@
-#read.csv("")
+library(tidyr)
+library(readr)
+library(dplyr)
 
-
-#subset 
+#subset and create dummy for dates during the concert
 Mexico <- Mexico %>% 
   select(Identifier, host_is_superhost, latitude, longitude, room_type, accommodates, price, date)
 
-#filter dates during concert  
-MexicoDuringConcert <- Mexico %>%
-filter(between(date, as.Date('2022-04-03'), as.Date('2022-04-07'))) %>%
-  arrange(date) 
+Mexico$DuringConcert <- ifelse(Mexico$date == as.Date("2022-05-28") | Mexico$date == as.Date("2022-05-29"), 1, 0) 
 
-#filter Dallas 
+
+#filter Dallas and create dummy for dates during the concert
 Dallas <- Dallas %>%
   select(Identifier, host_is_superhost, latitude, longitude, room_type, accommodates, price, date) 
 
-#filter dates during concert  
-DallasDuringConcert <- Dallas %>%
-  filter(between(date, as.Date('2022-04-06'), as.Date('2022-04-06'))) %>%
-  arrange(date)
+Dallas$DuringConcert <- ifelse(Dallas$date == as.Date("2022-05-06"), 1, 0) 
 
-#Filter Chicago 
+
+#Filter Chicago and create dummy for dates during the concert
 Chicago <- Chicago %>%
-  select(Identifier, host_is_superhost, latitude, longitude, room_type, accommodates, price, date)
+  select(Identifierßuperhost, latitude, longitude, room_type, accommodates, price, date)
 
-ChicagoDuringConcert <- Chicago %>%
-  filter(between(date, as.Date('2022-05-28'), as.Date('2022-05-29'))) %>%
-  arrange(date) 
+Chicago$DuringConcert <- ifelse(Chicago$date == as.Date("2022-05-28") | Chicago$date == as.Date("2022-05-29"), 1, 0) 
+
 
 #clean price column Dallas (not pretty but it works)
 DallasDuringConcert$price <- gsub('[$]', '', DallasDuringConcert$price)
@@ -48,7 +44,9 @@ MexicoDuringConcert$price <- gsub('[.]', '', MexicoDuringConcert$price)
 MexicoDuringConcert$price <- as.numeric(MexicoDuringConcert$price)
 MexicoDuringConcert$price <- MexicoDuringConcert$price / 100
 
-#create dummy variable for is host superhost 
+#create dummy variable for is host_superhost 
 DallasDuringConcert$host_is_superhost <- transform(as.numeric(DallasDuringConcert$host_is_superhost))
 MexicoDuringConcert$host_is_superhost <- transform(as.numeric(MexicoDuringConcert$host_is_superhost))
 ChicagoDuringConcert$host_is_superhost <- transform(as.numeric(ChicagoDuringConcert$host_is_superhost))
+
+
