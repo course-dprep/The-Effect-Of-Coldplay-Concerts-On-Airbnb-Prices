@@ -1,7 +1,7 @@
 library(readr)
 
 #create data repository 
-#dir.create('./data')  
+dir.create('./data')  
 
 
 #download and load data 
@@ -19,7 +19,7 @@ download.file(url = 'http://data.insideairbnb.com/united-states/il/chicago/2022-
               destfile = './data/Chicago_listings.csv.gz')
 
 download.file(url = 'http://data.insideairbnb.com/united-states/il/chicago/2022-09-14/data/reviews.csv.gz',
-              destfile = '.data/Chicago_reviews.csv.gz')
+              destfile = './data/Chicago_reviews.csv.gz')
 
 Chicago_listings <- read_csv('data/Chicago_listings.csv.gz')
 Chicago_reviews <- read_csv('data/Chicago_reviews.csv.gz')
