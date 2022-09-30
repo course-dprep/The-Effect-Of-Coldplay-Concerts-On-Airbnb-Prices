@@ -2,6 +2,7 @@ library(tidyr)
 library(readr)
 library(dplyr)
 
+
 #subset and create dummy for dates during the concert
 Mexico <- Mexico %>% 
   select(Identifier, host_is_superhost, latitude, longitude, room_type, accommodates, price, date)
@@ -42,11 +43,11 @@ Mexico$price <- gsub('[$]', '', Mexico$price)
 Mexico$price <- gsub('[,]', '', Mexico$price)
 Mexico$price <- gsub('[.]', '', Mexico$price)
 Mexico$price <- as.numeric(Mexico$price)
-Mexico$price <- Mexico$price / 100
+Mexico$price <- Mexico$price / 100 
 
 #create dummy variable for is host_superhost 
-DallasDuringConcert$host_is_superhost <- transform(as.numeric(DallasDuringConcert$host_is_superhost))
-MexicoDuringConcert$host_is_superhost <- transform(as.numeric(MexicoDuringConcert$host_is_superhost))
-ChicagoDuringConcert$host_is_superhost <- transform(as.numeric(ChicagoDuringConcert$host_is_superhost))
+Dallas$host_is_superhost <- transform(as.numeric(Dallas$host_is_superhost))
+Mexico$host_is_superhost <- transform(as.numeric(Mexico$host_is_superhost))
+Chicago$host_is_superhost <- transform(as.numeric(Chicago$host_is_superhost))
 
 
