@@ -4,14 +4,14 @@ library(readr)
 library(data.table)
 
 # Load datasets
-Dallas_listings <- read_csv('../../data/Dallas_listings.csv')
-Dallas_reviews <- read_csv('../../data/Dallas_reviews.csv')
+Dallas_listings <- read_csv('../../data/Dallas/Dallas_listings.csv')
+Dallas_reviews <- read_csv('../../data/Dallas/Dallas_reviews.csv')
 
-Chicago_listings <- read_csv('../../data/Chicago_listings.csv')
-Chicago_reviews <- read_csv('../../data/Chicago_reviews.csv')
+Chicago_listings <- read_csv('../../data/Chicago/Chicago_listings.csv')
+Chicago_reviews <- read_csv('../../data/Chicago/Chicago_reviews.csv')
 
-Mexico_listings <- read_csv('../../data/Mexico_listings.csv')
-Mexico_reviews <- read_csv('../../data/Mexico_reviews.csv')
+Mexico_listings <- read_csv('../../data//Mexico/Mexico_listings.csv')
+Mexico_reviews <- read_csv('../../data/Mexico/Mexico_reviews.csv')
 
 
 #rename columns to 'Identifier' and join Dallas
@@ -20,7 +20,7 @@ Dallas_reviews <- Dallas_reviews %>%
 Dallas_listings <- Dallas_listings %>%
   rename('Identifier' = id)
 
-Dallas <- left_join(Dallas_listings, Dallas_reviews, by = 'Identifier') #have to check which join we want
+Dallas_merged <- left_join(Dallas_listings, Dallas_reviews, by = 'Identifier') #have to check which join we want
 
 #rename columns to 'Identifier' and join Chicago 
 Chicago_reviews <- Chicago_reviews %>%
@@ -28,7 +28,7 @@ Chicago_reviews <- Chicago_reviews %>%
 Chicago_listings <- Chicago_listings %>%
   rename('Identifier' = id)
 
-Chicago <- left_join(Chicago_listings, Chicago_reviews, by = 'Identifier')
+Chicago_merged <- left_join(Chicago_listings, Chicago_reviews, by = 'Identifier')
 
 #rename columns to 'Identifier' and join Mexico
 Mexico_reviews <- Mexico_reviews %>%
@@ -36,8 +36,8 @@ Mexico_reviews <- Mexico_reviews %>%
 Mexico_listings <- Mexico_listings %>%
   rename('Identifier' = id)
 
-Mexico <- left_join(Mexico_listings, Mexico_reviews, by = 'Identifier')
+Mexico_merged <- left_join(Mexico_listings, Mexico_reviews, by = 'Identifier')
 
-fwrite(Mexico_merged, file = "../../data/Mexico.csv", sep = ",", quote = TRUE)
-fwrite(Dallas_merged, file = "../../data/Dallas.csv", sep = ",", quote = TRUE)
-fwrite(Chicago_merged, file = "../../data/Chicago.csv", sep = ",", quote = TRUE)
+fwrite(Mexico_merged, file = "../../data/Mexico/Mexico.csv", sep = ",", quote = TRUE)
+fwrite(Dallas_merged, file = "../../data/Dallas/Dallas.csv", sep = ",", quote = TRUE)
+fwrite(Chicago_merged, file = "../../data/Chicago/Chicago.csv", sep = ",", quote = TRUE)
