@@ -1,11 +1,18 @@
 library(tidyr)
 library(readr)
 library(dplyr)
+library(data.table)
+
+#import data 
+Mexico <- read_csv("../../data/Mexico.csv")
+Dallas <- read_csv("../../data/Dallas.csv")
+Chicago <- read_csv("../../data/Chicago.csv")
 
 
 #subset and create dummy for dates during the concert
 Mexico <- Mexico %>% 
-  select(Identifier, host_is_superhost, latitude, longitude, room_type, accommodates, price, date)
+  select(Identifier, host_is_superhost, latitude, longitude, room_type, accommodates, price, date) %>%
+  na.omit()
 
 Mexico$DuringConcert <- ifelse(Mexico$date == as.Date("2022-05-28") | Mexico$date == as.Date("2022-05-29"), 1, 0) 
 
@@ -19,7 +26,7 @@ Dallas$DuringConcert <- ifelse(Dallas$date == as.Date("2022-05-06"), 1, 0)
 
 #Filter Chicago and create dummy for dates during the concert
 Chicago <- Chicago %>%
-  select(Identifierßuperhost, latitude, longitude, room_type, accommodates, price, date)
+  select(Identifier, host_is_superhost, latitude, longitude, room_type, accommodates, price, date)
 
 Chicago$DuringConcert <- ifelse(Chicago$date == as.Date("2022-05-28") | Chicago$date == as.Date("2022-05-29"), 1, 0) 
 
@@ -46,8 +53,10 @@ Mexico$price <- as.numeric(Mexico$price)
 Mexico$price <- Mexico$price / 100 
 
 #create dummy variable for is host_superhost 
-Dallas$host_is_superhost <- transform(as.numeric(Dallas$host_is_superhost))
-Mexico$host_is_superhost <- transform(as.numeric(Mexico$host_is_superhost))
-Chicago$host_is_superhost <- transform(as.numeric(Chicago$host_is_superhost))
+
+
+fwrite(Mexico, file = "../../data/Mexico.csv", sep = ",", quote = TRUE)
+fwrite(Dallas, file = "../../data/Dallas.csv", sep = ",", quote = TRUE)
+fwrite(Chicago, file = "../../data/Chicago.csv", sep = ",", quote = TRUE)
 
 
