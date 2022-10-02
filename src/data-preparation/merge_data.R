@@ -1,7 +1,7 @@
 #install packages 
-install.packages('dplyr')
 library(dplyr)
 library(readr)
+library(data.table)
 
 # Load datasets
 Dallas_listings <- read_csv('../../data/Dallas_listings.csv.gz')
