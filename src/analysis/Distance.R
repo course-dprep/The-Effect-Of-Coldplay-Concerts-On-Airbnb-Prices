@@ -1,5 +1,9 @@
 #code for measuring distance 
 
+Mexico <- read_csv("../../data//Mexico/Mexico_cleaned.csv")
+Dallas <- read_csv("../../data/Dallas/Dallas_cleaned.csv")
+Chicago <- read_csv("../../data/Chicago/Chicago_cleaned.csv")
+
 earth.dist <- function (long1, lat1, long2, lat2)
 {
   rad <- pi/180
@@ -18,13 +22,15 @@ earth.dist <- function (long1, lat1, long2, lat2)
 
 #coordinates of Cotton Bowl stadium (Dalles) are -96.452099, 32.462819
 
-Dallas$distance <- earth.dist(Dallas$longitude, Dallas$latitude, -96.452099, 32.462819)
+Dallas_cleaned$distance <- earth.dist(Dallas_cleaned$longitude, Dallas_cleaned$latitude, -96.452099, 32.462819)
 
 #coordinates of Foro Sol (Mexico City) are -99.052724, 19.241055 
 
-Mexico$distance <- earth.dist(Mexico$longitude, Mexico$latitude, -99.052724, 19.241055)
+Mexico_cleaned$distance <- earth.dist(Mexico_cleaned$longitude, Mexico_cleaned$latitude, -99.052724, 19.241055)
 
 #coordinates of Soldier Field (Chicago) are -87.617256, 41.862366
 
-Chicago$distance <- earth.dist(Chicago$longitude, Chicago$latitude, -87.617256, 41.862366)
+Chicago_cleaned$distance <- earth.dist(Chicago_cleaned$longitude, Chicago_cleaned$latitude, -87.617256, 41.862366)
+
+
 
