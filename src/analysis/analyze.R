@@ -1,11 +1,12 @@
-#shape of the regression test 
-
-install.packages('fixest')
-install.packages('broom')
 library(fixest)
 library(broom)
 library(tidyr)
 library(ggplot2)
+
+#import data 
+Mexico <- read_csv("../../data/Mexico.csv")
+Dallas <- read_csv("../../data/Dallas.csv")
+Chicago <- read_csv("../../data/Chicago.csv")
 
 reg1 <-   feols(price ~ distance + 
                   accommodates + DuringConcert, 
