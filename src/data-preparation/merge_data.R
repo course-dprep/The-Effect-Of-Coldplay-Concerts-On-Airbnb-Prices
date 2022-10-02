@@ -4,14 +4,14 @@ library(dplyr)
 library(readr)
 
 # Load datasets
-Dallas_listings <- read_csv('data/Dallas_listings.csv.gz')
-Dallas_reviews <- read_csv('data/Dallas_reviews.csv.gz')
+Dallas_listings <- read_csv('../../data/Dallas_listings.csv.gz')
+Dallas_reviews <- read_csv('../../data/Dallas_reviews.csv.gz')
 
-Chicago_listings <- read_csv('data/Chicago_listings.csv.gz')
-Chicago_reviews <- read_csv('data/Chicago_reviews.csv.gz')
+Chicago_listings <- read_csv('../../data/Chicago_listings.csv.gz')
+Chicago_reviews <- read_csv('../../data/Chicago_reviews.csv.gz')
 
-Mexico_listings <- read_csv('data/Mexico_listings.csv.gz')
-Mexico_reviews <- read_csv('data/Mexico_reviews.csv.gz')
+Mexico_listings <- read_csv('../../data/Mexico_listings.csv.gz')
+Mexico_reviews <- read_csv('../../data/Mexico_reviews.csv.gz')
 
 
 #rename columns to 'Identifier' and join Dallas
@@ -38,4 +38,6 @@ Mexico_listings <- Mexico_listings %>%
 
 Mexico <- left_join(Mexico_listings, Mexico_reviews, by = 'Identifier')
 
-
+fwrite(Mexico, file = "../../data/Mexico.csv", sep = ":", quote = TRUE)
+fwrite(Dallas, file = "../../data/Dallas.csv", sep = ":", quote = TRUE)
+fwrite(Chicago, file = "../../data/Chicago.csv", sep = ":", quote = TRUE)
