@@ -38,6 +38,6 @@ Mexico_listings <- Mexico_listings %>%
 
 Mexico <- left_join(Mexico_listings, Mexico_reviews, by = 'Identifier')
 
-fwrite(Mexico, file = "../../data/Mexico.csv", sep = ",", quote = TRUE)
-fwrite(Dallas, file = "../../data/Dallas.csv", sep = ",", quote = TRUE)
-fwrite(Chicago, file = "../../data/Chicago.csv", sep = ",", quote = TRUE)
+fwrite(Mexico_merged, file = "../../data/Mexico.csv", sep = ",", quote = TRUE)
+fwrite(Dallas_merged, file = "../../data/Dallas.csv", sep = ",", quote = TRUE)
+fwrite(Chicago_merged, file = "../../data/Chicago.csv", sep = ",", quote = TRUE)

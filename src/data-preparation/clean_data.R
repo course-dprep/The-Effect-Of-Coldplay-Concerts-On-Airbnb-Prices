@@ -4,9 +4,9 @@ library(dplyr)
 library(data.table)
 
 #import data 
-Mexico <- read_csv("../../data/Mexico.csv")
-Dallas <- read_csv("../../data/Dallas.csv")
-Chicago <- read_csv("../../data/Chicago.csv")
+Mexico <- read_csv("../../data/Mexico_merged.csv")
+Dallas <- read_csv("../../data/Dallas_merged.csv")
+Chicago <- read_csv("../../data/Chicago_merged.csv")
 
 
 #subset and create dummy for dates during the concert
@@ -58,8 +58,8 @@ Dallas$host_is_superhost <- as.numeric(Dallas$host_is_superhost)
 Chicago$host_is_superhost <- as.numeric(Chicago$host_is_superhost)
 
 #output
-fwrite(Mexico, file = "../../data/Mexico.csv", sep = ",", quote = TRUE)
-fwrite(Dallas, file = "../../data/Dallas.csv", sep = ",", quote = TRUE)
-fwrite(Chicago, file = "../../data/Chicago.csv", sep = ",", quote = TRUE)
+fwrite(Mexico, file = "../../data/Mexico_cleaned.csv", sep = ",", quote = TRUE)
+fwrite(Dallas, file = "../../data/Dallas_cleaned.csv", sep = ",", quote = TRUE)
+fwrite(Chicago, file = "../../data/Chicago_cleaned.csv", sep = ",", quote = TRUE)
 
 
