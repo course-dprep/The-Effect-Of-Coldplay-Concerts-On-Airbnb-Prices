@@ -4,7 +4,7 @@ library(dplyr)
 library(data.table)
 
 #import data 
-Mexico <- read_csv("../../data//Mexico/Mexico_merged.csv")
+Mexico <- read_csv("../../data/Mexico/Mexico_merged.csv")
 Dallas <- read_csv("../../data/Dallas/Dallas_merged.csv")
 Chicago <- read_csv("../../data/Chicago/Chicago_merged.csv")
 
