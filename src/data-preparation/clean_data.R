@@ -53,8 +53,11 @@ Mexico$price <- as.numeric(Mexico$price)
 Mexico$price <- Mexico$price / 100 
 
 #create dummy variable for is host_superhost 
+Mexico$host_is_superhost <- as.numeric(Mexico$host_is_superhost)
+Dallas$host_is_superhost <- as.numeric(Dallas$host_is_superhost)
+Chicago$host_is_superhost <- as.numeric(Chicago$host_is_superhost)
 
-
+#output
 fwrite(Mexico, file = "../../data/Mexico.csv", sep = ",", quote = TRUE)
 fwrite(Dallas, file = "../../data/Dallas.csv", sep = ",", quote = TRUE)
 fwrite(Chicago, file = "../../data/Chicago.csv", sep = ",", quote = TRUE)
