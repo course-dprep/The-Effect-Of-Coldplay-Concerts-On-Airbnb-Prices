@@ -1,8 +1,8 @@
 #code for measuring distance 
 
-Mexico <- read_csv("../../data//Mexico/Mexico_cleaned.csv")
-Dallas <- read_csv("../../data/Dallas/Dallas_cleaned.csv")
-Chicago <- read_csv("../../data/Chicago/Chicago_cleaned.csv")
+Mexico_cleaned <- read_csv("../../data//Mexico/Mexico_cleaned.csv")
+Dallas_cleaned <- read_csv("../../data/Dallas/Dallas_cleaned.csv")
+Chicago_cleaned <- read_csv("../../data/Chicago/Chicago_cleaned.csv")
 
 earth.dist <- function (long1, lat1, long2, lat2)
 {
