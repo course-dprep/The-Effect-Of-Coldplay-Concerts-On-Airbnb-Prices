@@ -12,7 +12,6 @@ Chicago <- read_csv("../../data/Chicago/Chicago_merged.csv")
 #subset, filter for outlying prices and create dummy for dates during the concert for Mexico
 Mexico_cleaned <- Mexico %>% 
   select(Identifier, host_is_superhost, latitude, longitude, room_type, accommodates, price, date) %>%
-  na.omit() %>%
   filter(price < 9999)
 
 Mexico_cleaned$DuringConcert <- ifelse(Mexico$date == as.Date("2022-05-28") | Mexico$date == as.Date("2022-05-29"), 1, 0) 
@@ -21,7 +20,6 @@ Mexico_cleaned$DuringConcert <- ifelse(Mexico$date == as.Date("2022-05-28") | Me
 #subset, filter for outlying prices and create dummy for dates during the concert for Dallas
 Dallas_cleaned <- Dallas %>%
   select(Identifier, host_is_superhost, latitude, longitude, room_type, accommodates, price, date) %>%
-  na.omit() %>%
   filter(price < 9999)
   
 Dallas_cleaned$DuringConcert <- ifelse(Dallas$date == as.Date("2022-05-06"), 1, 0) 
@@ -31,7 +29,6 @@ Dallas_cleaned$DuringConcert <- ifelse(Dallas$date == as.Date("2022-05-06"), 1, 
 #subset, filter for outlying prices and create dummy for dates during the concert for Chicago 
 Chicago_cleaned <- Chicago %>%
   select(Identifier, host_is_superhost, latitude, longitude, room_type, accommodates, price, date) %>%
-  na.omit() %>%
   filter(price < 9999)
 
 Chicago_cleaned$DuringConcert <- ifelse(Chicago$date == as.Date("2022-05-28") | Chicago$date == as.Date("2022-05-29"), 1, 0) 
