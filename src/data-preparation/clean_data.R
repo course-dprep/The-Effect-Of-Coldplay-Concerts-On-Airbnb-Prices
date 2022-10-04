@@ -21,7 +21,7 @@ Mexico$DuringConcert <- ifelse(Mexico$date == as.Date("2022-05-28") | Mexico$dat
 #subset, filter for outlying prices and create dummy for dates during the concert for Dallas
 Dallas <- Dallas %>%
   select(Identifier, host_is_superhost, latitude, longitude, room_type, accommodates, price, date) %>%
-  na.omit %>%
+  na.omit() %>%
   filter(price < 9999)
   
 Dallas$DuringConcert <- ifelse(Dallas$date == as.Date("2022-05-06"), 1, 0) 
@@ -62,6 +62,11 @@ Mexico$price <- Mexico$price / 100
 Mexico$host_is_superhost <- as.numeric(Mexico$host_is_superhost)
 Dallas$host_is_superhost <- as.numeric(Dallas$host_is_superhost)
 Chicago$host_is_superhost <- as.numeric(Chicago$host_is_superhost)
+
+#rename for clarity 
+Mexico_cleaned <- Mexico
+Chicaco_cleaned <- Chicago
+Dallas_cleaned <- Dallas
 
 #output
 fwrite(Mexico, file = "../../data/Mexico/Mexico_cleaned.csv", sep = ",", quote = TRUE)
