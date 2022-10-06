@@ -66,8 +66,8 @@ Chicago_cleaned$host_is_superhost <- as.numeric(Chicago_cleaned$host_is_superhos
 
 
 #output
-fwrite(Mexico, file = "../../data/Mexico/Mexico_cleaned.csv", sep = ",", quote = TRUE)
-fwrite(Dallas, file = "../../data/Dallas/Dallas_cleaned.csv", sep = ",", quote = TRUE)
-fwrite(Chicago, file = "../../data/Chicago/Chicago_cleaned.csv", sep = ",", quote = TRUE)
+fwrite(Mexico, file = "../../data/Mexico/Mexico_cleaned_for_dist.csv", sep = ",", quote = TRUE)
+fwrite(Dallas, file = "../../data/Dallas/Dallas_cleaned_for_dist.csv", sep = ",", quote = TRUE)
+fwrite(Chicago, file = "../../data/Chicago/Chicago_cleaned_for_dist.csv", sep = ",", quote = TRUE)
 
 
