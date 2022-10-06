@@ -1,8 +1,28 @@
-# Download dataset 1
-# dir.create('./data/dataset1')  # Uncomment if need to create directory with R
-download.file('https://rgreminger.github.io/files/dataset1.csv','./data/dataset1/dataset1.csv')
+library(readr)
 
-# Download dataset 2
-# dir.create('./data/dataset2')  # Uncomment if need to create directory with R
-download.file('https://rgreminger.github.io/files/dataset2.csv','./data/dataset2/dataset2.csv')
+#create data repository 
+dir.create('../../data/Dallas')  
+dir.create('../../data/Chicago')
+dir.create('../../data/Mexico')
+
+
+#download and load data 
+#Dallas
+download.file(url = 'http://data.insideairbnb.com/united-states/tx/dallas/2022-09-14/data/listings.csv',
+              destfile = '../../data/Dallas/Dallas_listings.csv')
+download.file(url = 'http://data.insideairbnb.com/united-states/tx/dallas/2022-09-14/data/reviews.csv',
+              destfile = '../../data/Dallas/Dallas_reviews.csv')
+
+#Chicago
+download.file(url = 'http://data.insideairbnb.com/united-states/il/chicago/2022-09-14/data/listings.csv',
+              destfile = '../../data/Chicago/Chicago_listings.csv')
+download.file(url = 'http://data.insideairbnb.com/united-states/il/chicago/2022-09-14/data/reviews.csv',
+              destfile = '../../data/Chicago/Chicago_reviews.csv')
+
+
+#Mexico City
+download.file(url = 'http://data.insideairbnb.com/mexico/df/mexico-city/2022-06-21/data/listings.csv',
+              destfile = '../../data/Mexico/Mexico_listings.csv')
+download.file(url = 'http://data.insideairbnb.com/mexico/df/mexico-city/2022-06-21/data/reviews.csv',
+              destfile = '../../data/Mexico/Mexico_reviews.csv')
 
