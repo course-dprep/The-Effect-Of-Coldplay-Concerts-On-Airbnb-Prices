@@ -64,10 +64,13 @@ Chicago_cleaned$host_is_superhost <- as.numeric(Chicago_cleaned$host_is_superhos
 #Mexico_cleaned <- Mexico_cleaned %>%
   #filter(price < 9999)
 
+Mexico_cleaned_for_dist <- Mexico_cleaned
+Dallas_cleaned_for_dist <- Dallas_cleaned
+Chicago_cleaned_for_dist <- Chicago_cleaned
 
 #output
-fwrite(Mexico, file = "../../data/Mexico/Mexico_cleaned_for_dist.csv", sep = ",", quote = TRUE)
-fwrite(Dallas, file = "../../data/Dallas/Dallas_cleaned_for_dist.csv", sep = ",", quote = TRUE)
-fwrite(Chicago, file = "../../data/Chicago/Chicago_cleaned_for_dist.csv", sep = ",", quote = TRUE)
+fwrite(Mexico_cleaned, file = "../../data/Mexico/Mexico_cleaned_for_dist.csv", sep = ",", quote = TRUE)
+fwrite(Dallas_cleaned, file = "../../data/Dallas/Dallas_cleaned_for_dist.csv", sep = ",", quote = TRUE)
+fwrite(Chicago_cleaned, file = "../../data/Chicago/Chicago_cleaned_for_dist.csv", sep = ",", quote = TRUE)
 
 
