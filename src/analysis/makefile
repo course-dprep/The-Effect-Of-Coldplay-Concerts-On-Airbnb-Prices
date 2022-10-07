@@ -1,3 +1,13 @@
+#run analysis 
+../../gen/Dallas_reg: ../../Dallas_cleaned analyze.R
+	R --vanilla --ars "" < "analyze.R"
+
+../../gen/Chicago: ../../Chicago_cleaned analyze.R
+	R --vanilla --ars "" < "analyze.R"
+	
+../../gen/Mexico: ../../Mexico_cleaned analyze.R
+	R --vanilla --ars "" < "analyze.R"
+
 #write graphs 
 ../../gen/Mexico_graph: ../../data/Mexico/Mexico_cleaned_for_dist.csv graph.R
   R --vanilla --args "" < "graph.R"
