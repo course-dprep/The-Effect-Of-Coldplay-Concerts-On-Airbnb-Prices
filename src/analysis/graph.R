@@ -1,8 +1,8 @@
 #code for measuring distance 
 
-Mexico_cleaned_for_dist <- read_csv("../../data//Mexico/Mexico_cleaned_for_dist.csv")
-Dallas_cleaned_for_dist <- read_csv("../../data/Dallas/Dallas_cleaned_for_dist.csv")
-Chicago_cleaned_for_dist <- read_csv("../../data/Chicago/Chicago_cleaned_for_dist.csv")
+Mexico_cleaned_for_dist <- read_csv("../../data//Mexico/Mexico_cleaned.csv")
+Dallas_cleaned_for_dist <- read_csv("../../data/Dallas/Dallas_cleaned.csv")
+Chicago_cleaned_for_dist <- read_csv("../../data/Chicago/Chicago_cleaned.csv")
 
 #create graph with mean price for Dallas
 Dallas_graph <- Dallas_cleaned %>% 
