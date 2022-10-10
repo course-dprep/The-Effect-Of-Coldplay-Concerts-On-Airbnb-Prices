@@ -14,14 +14,16 @@ Mexico_cleaned <- Mexico_merged %>%
   select(Identifier, host_is_superhost, latitude, longitude, room_type, accommodates, price, date) 
 
 Mexico_cleaned$DuringConcert <- ifelse(Mexico_cleaned$date == as.Date("2022-05-28") | Mexico_cleaned$date == as.Date("2022-05-29"), 1, 0) 
-
+Mexico_cleaned$BeforeConcert <- iselfse(Dallas_cleaned$date <= as.Date("2022-05-27"),1, 0 )
+Mexico_cleaned$AfterConcert <- iselse(Dallas_cleaned$date >= as.Date("2022-05-29"),1,0)
 
 #subset, filter for outlying prices and create dummy for dates during the concert for Dallas
 Dallas_cleaned <- Dallas_merged %>%
   select(Identifier, host_is_superhost, latitude, longitude, room_type, accommodates, price, date) 
-  
-Dallas_cleaned$DuringConcert <- ifelse(Dallas_cleaned$date == as.Date("2022-05-06"), 1, 0) 
 
+Dallas_cleaned$DuringConcert <- ifelse(Dallas_cleaned$date == as.Date("2022-05-06"), 1, 0) 
+Dallas_cleaned$BeforeConcert <- ifelse(Dallas_cleaned$date <= as.Date("2022-05-05"),1, 0 )
+Dallas_cleaned$AfterConcert <- ifelse(Dallas_cleaned$date >= as.Date("2022-05-07"), 1, 0)
 
 
 #subset, filter for outlying prices and create dummy for dates during the concert for Chicago 
@@ -29,9 +31,11 @@ Chicago_cleaned <- Chicago_merged %>%
   select(Identifier, host_is_superhost, latitude, longitude, room_type, accommodates, price, date) 
 
 Chicago_cleaned$DuringConcert <- ifelse(Chicago_cleaned$date == as.Date("2022-05-28") | Chicago_cleaned$date == as.Date("2022-05-29"), 1, 0) 
+Chicago_cleaned$BeforeConcert <- ifelse(Chicago_cleaned$date <= as.Date("2022-05-27"), 1, 0) 
+Chicago_cleaned$AfterConcert <- ifelse(Chicago_cleaned$date == as.Date("2022-05-29"), 1, 0) 
 
 
-#clean price column Dallas 
+#clean price column Dallas
 Dallas_cleaned$price <- gsub('[$]', '', Dallas_cleaned$price)
 Dallas_cleaned$price <- gsub('[,]', '', Dallas_cleaned$price)
 Dallas_cleaned$price <- gsub('[.]', '', Dallas_cleaned$price)
@@ -60,11 +64,11 @@ Chicago_cleaned$host_is_superhost <- as.numeric(Chicago_cleaned$host_is_superhos
 
 #filter outliers by filtering price < 9999 #check if this is necessary 
 # Dallas_cleaned <- Dallas_cleaned %>% 
-  #filter(price < 9999)
+#filter(price < 9999)
 # Chicago_cleaned <- Chicago_cleaned %>%
-  #filter(price < 9999)
+#filter(price < 9999)
 #Mexico_cleaned <- Mexico_cleaned %>%
-  #filter(price < 9999)
+#filter(price < 9999)
 
 #calculate distance column 
 earth.dist <- function (long1, lat1, long2, lat2)
@@ -97,7 +101,3 @@ Chicago_cleaned$distance <- earth.dist(Chicago_cleaned$longitude, Chicago_cleane
 fwrite(Mexico_cleaned, file = "../../data/Mexico/Mexico_cleaned.csv", sep = ",", quote = TRUE )
 fwrite(Dallas_cleaned, file = "../../data/Dallas/Dallas_cleaned.csv", sep = ",", quote = TRUE)
 fwrite(Chicago_cleaned, file = "../../data/Chicago/Chicago_cleaned.csv", sep = ",", quote = TRUE)
-
-
-
-
