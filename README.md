@@ -27,19 +27,17 @@ We will use data about the listings from Airbnb retrieved by "http://insideairbn
 
 ### Research questions
 
-1. "To what extent do prices of Airbnb's differ before, during, and after Coldplay concerts in the cities Dallas, Chicago, and Mexico City?"
-2. "To what extent does the distance between an Airbnb and the place of the concert influence the relationship between the prices of an Airbnb before, during, and after a Coldplay concert?"
-3. "To what extent does the type of the room influence the relationship between the prices of an Airbnb before, during, and after a Coldplay concert?
-4. "What is the influence of distance between an Airbnb and the place of the concert on the price of an Airbnb?"
-5. "What is the influence of type of the room on the price of an Airbnb?"
+1. "To what extent do prices of Airbnb's differ during Coldplay concerts in the cities Dallas, Chicago, and Mexico City?"
+2. "To what extent does the distance between an Airbnb and the place of the concert influence the relationship between the prices of an Airbnb during a Coldplay concert?"
+3. "To what extent does the type of the room influence the relationship between the prices of an Airbnb during a Coldplay concert?
 
 ### Conceptual model
 
 ## 2. Method
 
-We retrieved the data from http://insideairbnb.com/get-the-data. From there on we first merged for every city the two datasets: listings and reviews. Then, we cleaned the data by filtering out all unnecessary variables in the dataset and added a new variable consisting of the distance between the Airbnb listing and the place of the Coldplay concert. Furthermore, we grouped the listings by three different groups: before, during, and after the Coldplay concert for all three cities. 
+We retrieved the data from http://insideairbnb.com/get-the-data. From there on we first merged for every city the two datasets: listings and reviews. Then, we cleaned the data by filtering out all unnecessary variables in the dataset and added a new variable consisting of the distance between the Airbnb listing and the place of the Coldplay concert. Furthermore, we created a new variable consisting of the data of the dates during the concerts and we filtered observations by one month before and one month after the concerts to reduce the dataset. We found the dates of the concerts via "http://songkick.com". On top of that, we filtered price outliers by removing prices above $9999.00. 
 
-After cleaning and preparing the data, we started to perform the analysis. For the questions 1,2, 3, and 5 we used an (M)ANOVA and for question 5 we have used a regression analysis. For the relationships we have created plots for the visualization of the results. 
+After cleaning and preparing the data, we started to perform the analysis. We have done a regression analysis to obtain the results. On top of that, we created plots to visualize the results.
 
 ## 4. Results and Conclusion
 
