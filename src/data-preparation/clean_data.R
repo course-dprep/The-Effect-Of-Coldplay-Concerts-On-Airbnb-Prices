@@ -62,13 +62,13 @@ Mexico_cleaned$host_is_superhost <- as.numeric(Mexico_cleaned$host_is_superhost)
 Dallas_cleaned$host_is_superhost <- as.numeric(Dallas_cleaned$host_is_superhost)
 Chicago_cleaned$host_is_superhost <- as.numeric(Chicago_cleaned$host_is_superhost)
 
-#filter outliers by filtering price < 9999 #check if this is necessary 
-# Dallas_cleaned <- Dallas_cleaned %>% 
-#filter(price < 9999)
-# Chicago_cleaned <- Chicago_cleaned %>%
-#filter(price < 9999)
-#Mexico_cleaned <- Mexico_cleaned %>%
-#filter(price < 9999)
+# filter outliers by filtering price < 9999 
+Dallas_cleaned <- Dallas_cleaned %>% 
+  filter(price < 9999)
+Chicago_cleaned <- Chicago_cleaned %>%
+  filter(price < 9999)
+Mexico_cleaned <- Mexico_cleaned %>%
+  filter(price < 9999)
 
 #calculate distance column 
 earth.dist <- function (long1, lat1, long2, lat2)
