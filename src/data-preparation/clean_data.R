@@ -9,31 +9,31 @@ Dallas_merged <- read_csv("../../data/Dallas/Dallas_merged.csv")
 Chicago_merged <- read_csv("../../data/Chicago/Chicago_merged.csv")
 
 
-#subset, filter for outlying prices and create dummy for dates during the concert for Mexico
+#subset, filter for dates one month before and after the concert for Mexico.
 Mexico_cleaned <- Mexico_merged %>% 
-  select(Identifier, host_is_superhost, latitude, longitude, room_type, accommodates, price, date) 
+  select(Identifier, host_is_superhost, latitude, longitude, room_type, accommodates, price, date) %>%
+  filter(Mexico_merged$date > "2022-03-03" & Mexico_merged$date < "2022-05-07")
 
-Mexico_cleaned$DuringConcert <- ifelse(Mexico_cleaned$date == as.Date("2022-05-28") | Mexico_cleaned$date == as.Date("2022-05-29"), 1, 0) 
-Mexico_cleaned$BeforeConcert <- ifelse(Mexico_cleaned$date <= as.Date("2022-05-27"),1, 0 )
-Mexico_cleaned$AfterConcert <- ifelse(Mexico_cleaned$date >= as.Date("2022-05-29"),1,0)
+#create variable for days of the concert for Mexico.
+Mexico_cleaned$DuringConcert <- Mexico_cleaned$date == as.Date("2022-04-03") | Mexico_cleaned$date == as.Date("2022-04-04") | Mexico_cleaned$date == as.Date("2022-04-06")| Mexico_cleaned$date == as.Date("2022-04-07") 
 
-#subset, filter for outlying prices and create dummy for dates during the concert for Dallas
+
+#subset, filter for dates one month before and after the concert for Dallas.
 Dallas_cleaned <- Dallas_merged %>%
-  select(Identifier, host_is_superhost, latitude, longitude, room_type, accommodates, price, date) 
+  select(Identifier, host_is_superhost, latitude, longitude, room_type, accommodates, price, date) %>%
+  filter(Dallas_merged$date > "2022-04-06" & Dallas_merged$date < "2022-06-06")
 
-Dallas_cleaned$DuringConcert <- ifelse(Dallas_cleaned$date == as.Date("2022-05-06"), 1, 0) 
-Dallas_cleaned$BeforeConcert <- ifelse(Dallas_cleaned$date <= as.Date("2022-05-05"),1, 0 )
-Dallas_cleaned$AfterConcert <- ifelse(Dallas_cleaned$date >= as.Date("2022-05-07"), 1, 0)
+#create variable for days of the concert for Dallas
+
+Dallas_cleaned$DuringConcert <- Dallas_cleaned$date == as.Date("2022-05-06")
 
 
-#subset, filter for outlying prices and create dummy for dates during the concert for Chicago 
+#subset, filter for dates one month before and after the concert for Chicago.
 Chicago_cleaned <- Chicago_merged %>%
-  select(Identifier, host_is_superhost, latitude, longitude, room_type, accommodates, price, date) 
+  select(Identifier, host_is_superhost, latitude, longitude, room_type, accommodates, price, date) %>%
+  filter(Chicago_merged$date > "2022-04-28" & Chicago_merged$date < "2022-06-29")
 
-Chicago_cleaned$DuringConcert <- ifelse(Chicago_cleaned$date == as.Date("2022-05-28") | Chicago_cleaned$date == as.Date("2022-05-29"), 1, 0) 
-Chicago_cleaned$BeforeConcert <- ifelse(Chicago_cleaned$date <= as.Date("2022-05-27"), 1, 0) 
-Chicago_cleaned$AfterConcert <- ifelse(Chicago_cleaned$date == as.Date("2022-05-29"), 1, 0) 
-
+Chicago_cleaned$DuringConcert <- Chicago_cleaned$date == as.Date("2022-05-28") | Chicago_cleaned$date == as.Date("2022-05-29")
 
 #clean price column Dallas
 Dallas_cleaned$price <- gsub('[$]', '', Dallas_cleaned$price)
