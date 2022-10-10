@@ -14,38 +14,23 @@ Mexico_cleaned <- read_csv("../../data/Mexico/Mexico_cleaned.csv")
 Dallas_cleaned <- read_csv("../../data/Dallas/Dallas_cleaned.csv")
 Chicago_cleaned <- read_csv("../../data/Chicago/Chicago_cleaned.csv")
 
-#run regressions research question 1 -> checking if this is necessary in our study
-Dallas_reg_1 <-   feols(price ~ AfterConcert 
-                  + BeforeConcert,
-                  data = Dallas_cleaned)
-tidy(Dallas_reg_1, conf.int = TRUE)
 
-Chicago_reg_2 <-   feols(price ~ AfterConcert 
-                       + BeforeConcert, 
-                      data = Chicago_cleaned)
-tidy(Chicago_reg_2, conf.int = TRUE)
+#run regressions
 
-Mexico_reg_2 <- feols(price ~ AfterConcert 
-                      + BeforeConcert, 
-                      data = Mexico_cleaned)
-tidy(Mexico_reg_2, conf.int = TRUE)
-
-#run regression interactions distance and type of room
-
-Dallas_reg_2 <- feols(price ~ DuringConcert + distance + room_type +
+Dallas_reg <- feols(price ~ DuringConcert + distance + room_type +
                         DuringConcert*distance + DuringConcert*room_type,
                       data = Dallas_cleaned)
-tidy(Dallas_reg_2, conf.int = TRUE)
+tidy(Dallas_reg, conf.int = TRUE)
 
-Chicago_reg_2 <- feols(price ~ DuringConcert + distance + room_type +
+Chicago_reg <- feols(price ~ DuringConcert + distance + room_type +
                          DuringConcert*distance + DuringConcert*room_type,
                        data = Chicago_cleaned)
-tidy(Chicago_reg_2, conf.int = TRUE)
+tidy(Chicago_reg, conf.int = TRUE)
 
-Mexico_reg_2 <- feols(price ~ DuringConcert + distance + room_type +
+Mexico_reg <- feols(price ~ DuringConcert + distance + room_type +
                         DuringConcert*distance + DuringConcert*room_type,
                       data = Mexico_cleaned)
-tidy(Mexico_reg_2, conf.int = TRUE)
+tidy(Mexico_reg, conf.int = TRUE)
 
 #save regressions 
 fwrite(Dallas_reg, file = "../../gen/Dallas_reg")
