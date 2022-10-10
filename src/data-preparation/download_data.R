@@ -1,6 +1,7 @@
 library(readr)
 
 #create data repository 
+dir.create('../../data')
 dir.create('../../data/Dallas')  
 dir.create('../../data/Chicago')
 dir.create('../../data/Mexico')
