@@ -14,8 +14,8 @@ Mexico_cleaned <- Mexico_merged %>%
   select(Identifier, host_is_superhost, latitude, longitude, room_type, accommodates, price, date) 
 
 Mexico_cleaned$DuringConcert <- ifelse(Mexico_cleaned$date == as.Date("2022-05-28") | Mexico_cleaned$date == as.Date("2022-05-29"), 1, 0) 
-Mexico_cleaned$BeforeConcert <- iselfse(Dallas_cleaned$date <= as.Date("2022-05-27"),1, 0 )
-Mexico_cleaned$AfterConcert <- iselse(Dallas_cleaned$date >= as.Date("2022-05-29"),1,0)
+Mexico_cleaned$BeforeConcert <- ifelse(Mexico_cleaned$date <= as.Date("2022-05-27"),1, 0 )
+Mexico_cleaned$AfterConcert <- ifelse(Mexico_cleaned$date >= as.Date("2022-05-29"),1,0)
 
 #subset, filter for outlying prices and create dummy for dates during the concert for Dallas
 Dallas_cleaned <- Dallas_merged %>%
