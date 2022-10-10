@@ -1,4 +1,5 @@
 #code for measuring distance 
+library(ggplot2)
 
 Mexico_cleaned <- read_csv("../../data//Mexico/Mexico_cleaned.csv")
 Dallas_cleaned <- read_csv("../../data/Dallas/Dallas_cleaned.csv")
@@ -22,6 +23,7 @@ Dallas_point_graph <- Dallas_cleaned %>%
   ggplot(aes(x= date, y= mean_price)) +
   geom_point()
 print(Dallas_point_graph)
+
 
 Dallas_cleaned %>% filter(price < 9999) %>% 
   filter(date >= "2022-04-06") %>%
