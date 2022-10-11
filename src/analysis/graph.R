@@ -23,7 +23,11 @@ print(Dallas_point_graph)
 
 Dallas_cleaned %>%
   filter(DuringConcert) %>%
-  ggplot(Dallas_cleaned, mapping = aes(date, price)) + geom_point(aes(color = distance))
+  ggplot(Dallas_cleaned, mapping = aes(distance, price)) + geom_point(aes(color = date))
+
+Dallas_cleaned %>%
+  filter(DuringConcert) %>%
+  ggplot(Dallas_cleaned, mapping = aes(room_type, price)) + geom_point(aes(color = date))
 
 #create graph with mean price for Mexico
 Mexico_graph <- Mexico_cleaned %>% filter(distance <= 50) %>% 
@@ -41,8 +45,12 @@ Mexico_point_graph <- Mexico_cleaned %>%
 print(Mexico_point_graph)
 
 Mexico_cleaned %>% 
-  filter(DuringConcert)
-  ggplot(Mexico_cleaned, mapping = aes(room_type, price)) + geom_point(aes(color = distance))
+  filter(DuringConcert) %>%
+  ggplot(Mexico_cleaned, mapping = aes(distance, price)) + geom_point(aes(color = date))
+
+Mexico_cleaned %>% 
+  filter(DuringConcert) %>%
+  ggplot(Mexico_cleaned, mapping = aes(room_type, price)) + geom_point(aes(color = date))
 
 #create graph with mean price for Chicago
 Chicago_graph <- Chicago_cleaned %>% filter(distance <= 50) %>% 
@@ -60,8 +68,12 @@ Chicago_point_graph <- Chicago_cleaned %>%
 print(Chicago_point_graph)
 
 Chicago_cleaned %>%
-  filter(DuringConcert)
-  ggplot(Chicago_cleaned, mapping = aes(room_type, price)) + geom_point(aes(color = distance))
+  filter(DuringConcert) %>%
+ggplot(Chicago_cleaned, mapping = aes(distance, price)) + geom_point(aes(color = date))
+
+Chicago_cleaned %>%
+  filter(DuringConcert) %>%
+  ggplot(Chicago_cleaned, mapping = aes(room_type, price)) + geom_point(aes(color = date))
 
 fwrite(Dallas_graph, file = "../../gen/Dallas_graph")
 fwrite(Mexico_graph, file = "../../gen/Mexico_graph")
