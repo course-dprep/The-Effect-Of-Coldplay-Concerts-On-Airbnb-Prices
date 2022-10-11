@@ -15,18 +15,21 @@ Dallas_cleaned <- read_csv("../../data/Dallas/Dallas_cleaned.csv")
 Chicago_cleaned <- read_csv("../../data/Chicago/Chicago_cleaned.csv")
 
 #run regressions 
-Dallas_reg <-   feols(price ~ distance + 
-                  accommodates + DuringConcert, 
-                  data = Dallas_cleaned)
+Dallas_reg <-   feols(price ~ DuringConcert +
+                        distance + room_type +
+                        accommodates, 
+                        data = Dallas_cleaned)
 tidy(Dallas_reg, conf.int = TRUE)
 
-Chicago_reg <-   feols(price ~ distance + 
-                        accommodates + DuringConcert, 
-                      data = Chicago_cleaned)
+Chicago_reg <-   feols(price ~ DuringConcert +
+                         distance + room_type +
+                         accommodates, 
+                         data = Chicago_cleaned)
 tidy(Chicago_reg, conf.int = TRUE)
 
-Mexico_reg <-   feols(price ~ distance + 
-                        accommodates + DuringConcert, 
+Mexico_reg <-   feols(price ~ DuringConcert+
+                        distance + room_type +
+                        accommodates, 
                       data = Mexico_cleaned)
 tidy(Mexico_reg, conf.int = TRUE)
 
