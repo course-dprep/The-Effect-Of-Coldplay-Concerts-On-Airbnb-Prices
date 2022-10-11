@@ -1,10 +1,10 @@
 # Airbnb Prices during Coldplay Concerts 
 
 ## Table of contents
-1. Our Project
-- Description of the research
-- Research question
-- Conceptual model
+[1. Our Project](https://github.com/course-dprep/team-assignment-team-5#1-Our-Project)
+- [Description of the research](https://github.com/course-dprep/team-assignment-team-5#1-Description-of-the-research)
+- [Research questions](https://github.com/course-dprep/team-assignment-team-5#1-Research-questions)
+- [Conceptual model](https://github.com/course-dprep/team-assignment-team-5#1-Conceptual-model)
 
 2. Method
 - Data
