@@ -31,10 +31,31 @@ knitr::opts_chunk$set(echo = TRUE)
 * Files
 * Structure 
 
-;waraghpiehfawgpih e
+# 2. Method
+## Data
+First, we retreived data from "http://insideairbnb.com/get-the-data" to get the data from Airbnb listings. The data from this website was at the moment of starting this assignment only available till mid June 2022. Therefore, we had to check in which cities a Coldplay concert has taken place before mid June 2022. To find the dates of all Coldplay concerts of the tour 'Music of the Spheres' we used "http://songkick.com". We then found that the only suitable cities for our dataset are Mexico City, Dallas, and Chicago. To download the data, we needed to install the package 'readr'. 
 
+After retrieving the data, we continued to merge the 'listing' and 'reviews' datasets for each country. For merging the datasets, we needed to download the 'dplyr' and the 'data.table' packages. Then, we cleaned the data by removing unneccassary variables in the dataset. We reduced the dataset by filtering for the dates one month before and one month after te Coldplay concert for each city and we removed outliers by removing prices above $9999.00. We also created new variables, including the distance between the Airbnb listing and the place of the Coldplay concert, and a dummy variable of whether the listing was during the Coldplay concerts or not. An overview of the variables can be found in the next section. For cleaning the data, we needed to install the 'tidyr' package. 
 
+## Variables
+In the following table, a clear overview of all used variables is shown:
 
+| **Variable name**                        | **Variable explanation**                                     |
+| ---------------------------------------- |--------------------------------------------------------------|
+| price_in_dollars                   (Y)   | Price of the Airbnb in dollars                               |
+| date                               (X1)  | The date of the listing                                      |
+| DuringConcert                      (X2)  | Dummy whether the date is during the concert                 |
+| distance                           (X3)  | The distance between the Airbnb and the place of the concert |
+| room_type                          (X4)  | The type of the listing                                      |
+| accommodates                       (X5)  | The number of people staying at the Airbnb                   |
+
+## Research method
+
+To study the effect of Coldplay concerts on the price of an Airbnb influenced by the distance between the place of the Coldplay concert and the place of the Airbnb and the type of the listing, we will use a regression. The dependent variable is the Airbnb price in dollars, and the independent variables are the 'X' variables in the table above. We have also looked at the interaction of the interaction between DuringConcert and distance (X6), and the interaction between DuringConcert and room_type (X7). Which gives us the following regression: 
+
+Y = b0 + b1X1 + b2X2 + b3X3 + b4X4 + b5X5 + b6X6 + b7X7
+
+In the next session, the results of the regression will be presented. 
 
 
 ## R Markdown
