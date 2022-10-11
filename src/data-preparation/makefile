@@ -14,5 +14,7 @@ $(DATA)/Mexico/Mexico_cleaned.csv $(DATA)/Dallas/Dallas_cleaned.csv $(DATA)/Chic
 
 clean:
 	R -e "unlink('../../data/*.*')"
+	
+	
   
 
