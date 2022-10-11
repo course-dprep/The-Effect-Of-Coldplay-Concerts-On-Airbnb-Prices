@@ -22,7 +22,7 @@ earth.dist <- function (long1, lat1, long2, lat2)
 
 #coordinates of Cotton Bowl stadium (Dalles) are -96.452099, 32.462819
 
-Dallas_cleaned$distance <- earth.dist(Dallas_cleaned_$longitude, Dallas_cleaned$latitude, -96.452099, 32.462819)
+Dallas_cleaned$distance <- earth.dist(Dallas_cleaned$longitude, Dallas_cleaned$latitude, -96.452099, 32.462819)
 
 #coordinates of Foro Sol (Mexico City) are -99.052724, 19.241055 
 
