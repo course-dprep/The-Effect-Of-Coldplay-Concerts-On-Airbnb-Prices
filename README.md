@@ -1,5 +1,5 @@
-# Airbnb Prices during the Coldplay Worldtour 'Music of the Spheres'
-
+# Airbnb Prices during the Coldplay Worldtour 'Music of the Spheres' **Maybe change project name as well**
+**Only summarize the research --> this is how the project should look like, not the readme** --> main results in bullet point format, maybe screenshots. 
 ## Table of contents
 [1. Our Project](https://github.com/course-dprep/team-assignment-team-5#1-Our-Project)
 - Description of the research
@@ -18,7 +18,7 @@
 - Files
 - Structure
 
-## 1. Our Project
+## 1. Our Project - **Still need to add**: Choice for research method (regression), way of deployment, conclusion. Needs to be reproducible. 
 ### Description of the research
 In our research we study the price changes of Airbnb's in different cities in the period of a Coldplay concert of the worldtour 'Music of the Spheres'. We will look at the prices during a Coldplay concert and the periods before and after the concert to study the price differences caused by the Coldplay concerts. Furthermore, we will look at the influence of the type of listing, and the influence of the distance between an Airbnb and the place of the concert on the relationship of the concert on the price of the Airbnb.
 
@@ -43,7 +43,7 @@ Besides that, we will look at the influence of distance between the place of the
 ## 2. Method
 
 ### Dataset
-
+**Which packages did we use?**
 First, we retreived data from "http://insideairbnb.com/get-the-data" to get the data from Airbnb listings. The data from this website was at the moment of starting this assignment only available till mid June 2022. Therefore, we had to check in which cities a Coldplay concert has taken place before mid June 2022. To find the dates of all Coldplay concerts of the tour 'Music of the Spheres' we used "http://songkick.com". We then found that the only suitable cities for our dataset are Mexico City, Dallas, and Chicago. 
 
 After retrieving the data, we continued to merge the 'listing' and 'reviews' datasets for each country. Then, we cleaned the data by removing unneccassary variables in the dataset. We reduced the dataset by filtering for the dates one month before and one month after te Coldplay concert for each city and we removed outliers by removing prices above $9999.00. We also created new variables, including the distance between the Airbnb listing and the place of the Coldplay concert, and a dummy variable of whether the listing was during the Coldplay concerts or not. An overview of the variables can be found in the next section. 
@@ -67,6 +67,8 @@ To study the effect of Coldplay concerts on the price of an Airbnb influenced by
 Y = b0 + b1X1 + b2X2 + b3X3 + b4X4 + b5X5 + b6X6
 
 In the next session, the results of the regression will be presented. 
+
+**Analysis and deployement**
 
 ## 4. Results and Conclusion
 ### Results
