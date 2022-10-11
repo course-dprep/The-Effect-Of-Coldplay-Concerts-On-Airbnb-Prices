@@ -11,12 +11,29 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Table of contents
 
-## 1. Our Project
-* Description and motivation of the research
-* Relevance
-* Problem statement
-* Research questions
-* Conceptual model
+* Our Project
+  + Description and motivation of the research
+  + Relevance
+  + Problem statement
+  + Research questions
+  + Conceptual model
+
+<<<<<<< HEAD
+# 1. Our Project
+## Description and motivation of the research
+
+
+## Relevance
+
+We will look at changes in prices during Coldplay concerts in three different cities. Our study will be relevant for Airbnb hosts. Hosts will be able to determine the impact of big events in their city on Airbnb prices. Furthermore, we study the effect for only three cities and the specific Coldplay concert will continue to tour for some time in future in other cities. Whenever there is an effect of the concerts on the prices for Airbnb's, other cities can raise there prices in the period of the upcoming Coldplay concert.
+
+Besides that, we will look at the influence of distance between the place of the concert and the place of the Airbnb and the influence of the type of the listing. This gives insight in whether the distance between an Airbnb and the place of a big event and/or whether the type of a listing during a typical event influences the price. So, Airbnb's can have different price changes during a big event and should maybe react different than other Airbnb's.
+
+## Problem statement
+
+## Research questions
+
+## Conceptual model
 
 ## 2. Method
 * Data
