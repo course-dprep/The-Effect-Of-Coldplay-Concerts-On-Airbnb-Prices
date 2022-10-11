@@ -36,7 +36,23 @@ We will use data about the listings from Airbnb retrieved by "http://insideairbn
 ![Assignment dprep (2)](https://user-images.githubusercontent.com/38066744/195048115-211db366-c55f-4ff3-8ca2-dd5b18a81b26.png)
 ## 2. Method
 
+### Dataset
+
 We retrieved the data from http://insideairbnb.com/get-the-data. From there on we first merged for every city the two datasets: listings and reviews. Then, we cleaned the data by filtering out all unnecessary variables in the dataset and added a new variable consisting of the distance between the Airbnb listing and the place of the Coldplay concert. Furthermore, we created a new variable consisting of the data of the dates during the concerts and we filtered observations by one month before and one month after the concerts to reduce the dataset. We found the dates of the concerts via "http://songkick.com". On top of that, we filtered price outliers by removing prices above $9999.00. 
+
+### Variables
+
+In the following table, a clear overview of all used variables is shown:
+
+| **Variable name**                        | **Variable explanation**                                     |
+| ---------------------------------------- |--------------------------------------------------------------|
+| price_in_dollars                   (Y)   | Price of the Airbnb in dollars                               |
+| date                               (X1)  | The date of the listing                                      |
+| DuringConcert                      (X2)  | Dummy whether the date is during the concert                 |
+| distance                           (X3)  | The distance between the Airbnb and the place of the concert |
+| room_type                          (X4)  | The type of room                                             |
+
+### Research method
 
 After cleaning and preparing the data, we started to perform the analysis. We have done a regression analysis to obtain the results. On top of that, we created plots to visualize the results.
 
