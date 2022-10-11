@@ -3,6 +3,7 @@ library(readr)
 library(dplyr)
 library(data.table)
 
+
 #import data 
 Mexico_merged <- read_csv("../../data/Mexico/Mexico_merged.csv")
 Dallas_merged <- read_csv("../../data/Dallas/Dallas_merged.csv")
