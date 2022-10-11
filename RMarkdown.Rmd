@@ -17,24 +17,25 @@ knitr::opts_chunk$set(echo = TRUE)
   + Problem statement
   + Research questions
   + Conceptual model
+* Method
+  + Data
+  + Variables
+  + Research method
+* Results and conclusion
+  + Results
+  + Conclusion
+* Repository
+  + Files
+  + Structure
 
-## 2. Method
-* Data
-* Variables
-* Research method
+## 1. Our Project
+### Description and motivation of the research
 
-## 3. Results and Conclusion
-* Results
-* Conclusion
+In our research we study the price changes of Airbnb's in different cities in the period of a Coldplay concert of the worldtour 'Music of the Spheres'. We will look at the prices during a Coldplay concert and compare those to prices in the month before and after the concerts to study the price differences caused by the Coldplay concerts. Furthermore, we will look at the influence of the type of listing, and the influence of the distance between an Airbnb and the place of the concert on the relationship of the concert on the price of the Airbnb.
 
-## 4. Repository
-* Files
-* Structure 
+Since the tour of Coldplay started in March 2022 and will continue till July 2023, we are not able to study all cities. However, results of our study can help other cities by predicting prices of Airbnb's. The cities we will study are Mexico City, Dallas, and Chicago.
 
-<<<<<<< HEAD
-# 1. Our Project
-## Description and motivation of the research
-
+We will use data about the listings from Airbnb retrieved by [insideairbnb](http://insideairbnb.com/get-the-data), and to find the concert dates we will use data from [songkick](http://songkick.com).
 
 ## Relevance
 
@@ -44,6 +45,8 @@ Besides that, we will look at the influence of distance between the place of the
 
 ## Problem statement
 
+Airbnb prices can differ over time. Setting the right price can be difficult. Yet, it is beneficial to both Airbnb as well as the the people who list their property to set the right price. Therefore it is important to know what affects Airbnb prices. Do big events in the area of Airbnb's increase prices? To answer this question, the Coldplay tour "World of the Spheres" and its effect in different cities is analyzed. With the retrieved data, it is possible to adress the effect of big events on price changes for Airbnb. 
+
 ## Research questions
 
 1. "To what extent do prices of Airbnb's differ during Coldplay concerts in the cities Dallas, Chicago, and Mexico City?"
@@ -51,6 +54,7 @@ Besides that, we will look at the influence of distance between the place of the
 3. "To what extent does the type of the listing influence the relationship between the prices of an Airbnb during a Coldplay concert?
 
 ## Conceptual model
+![Conceptual model used in this study](https://user-images.githubusercontent.com/38066744/195048115-211db366-c55f-4ff3-8ca2-dd5b18a81b26.png)
 
 # 2. Method
 ## Data
@@ -77,6 +81,16 @@ To study the effect of Coldplay concerts on the price of an Airbnb influenced by
 Y = b0 + b1X1 + b2X2 + b3X3 + b4X4 + b5X5 + b6X6 + b7X7
 
 In the next session, the results of the regression will be presented. 
+
+## 3. Results and conclusion
+### results
+
+### conclusion
+
+## 4. Repository
+### Files
+
+### Structure
 
 
 ## R Markdown
