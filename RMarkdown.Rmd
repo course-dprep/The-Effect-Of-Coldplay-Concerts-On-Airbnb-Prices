@@ -18,6 +18,19 @@ knitr::opts_chunk$set(echo = TRUE)
   + Research questions
   + Conceptual model
 
+## 2. Method
+* Data
+* Variables
+* Research method
+
+## 3. Results and Conclusion
+* Results
+* Conclusion
+
+## 4. Repository
+* Files
+* Structure 
+
 <<<<<<< HEAD
 # 1. Our Project
 ## Description and motivation of the research
@@ -33,20 +46,11 @@ Besides that, we will look at the influence of distance between the place of the
 
 ## Research questions
 
+1. "To what extent do prices of Airbnb's differ during Coldplay concerts in the cities Dallas, Chicago, and Mexico City?"
+2. "To what extent does the distance between an Airbnb and the place of the concert influence the relationship between the prices of an Airbnb during a Coldplay concert?"
+3. "To what extent does the type of the listing influence the relationship between the prices of an Airbnb during a Coldplay concert?
+
 ## Conceptual model
-
-## 2. Method
-* Data
-* Variables
-* Research method
-
-## 3. Results and Conclusion
-* Results
-* Conclusion
-
-## 4. Repository
-* Files
-* Structure 
 
 # 2. Method
 ## Data
