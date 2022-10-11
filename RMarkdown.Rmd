@@ -1,0 +1,58 @@
+---
+title: "Airbnb prices during concerts of the Coldplay world tour 'Music of the Spheres'"
+author: "Niels Rahder, Thomas van Dijk, Eveline de Veld & Thierry Lahaije"
+date: "2022-10-11"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Table of contents
+
+## 1. Our Project
+* Description and motivation of the research
+* Relevance
+* Problem statement
+* Research questions
+* Conceptual model
+
+## 2. Method
+* Data
+* Variables
+* Research method
+
+## 3. Results and Conclusion
+* Results
+* Conclusion
+
+## 4. Repository
+* Files
+* Structure 
+
+;waraghpiehfawgpih e
+
+
+
+
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
