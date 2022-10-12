@@ -10,7 +10,7 @@ $(DATA)/Mexico/Mexico_merged.csv $(DATA)/Dallas/Dallas_merged.csv $(DATA)/Chicag
 
 #step 3 clean data 
 $(DATA)/Mexico/Mexico_cleaned.csv $(DATA)/Dallas/Dallas_cleaned.csv $(DATA)/Chicago/Chicago_cleaned.csv: $(DATA)/Mexico/Mexico_merged.csv $(DATA)/Dallas/Dallas_merged.csv $(DATA)/Chicago/Chicago_merged.csv
-	R --vanilla --args "" < "merge_data.R"	
+	R --vanilla --args "" < "clean_data.R"	
 
 clean:
 	R -e "unlink('../../data/*.*')"
