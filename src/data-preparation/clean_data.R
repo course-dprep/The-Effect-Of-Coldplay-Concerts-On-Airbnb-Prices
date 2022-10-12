@@ -9,27 +9,6 @@ Mexico_merged <- read_csv("../../data/Mexico/Mexico_merged.csv")
 Dallas_merged <- read_csv("../../data/Dallas/Dallas_merged.csv")
 Chicago_merged <- read_csv("../../data/Chicago/Chicago_merged.csv")
 
-#clean price column Dallas
-Dallas_cleaned$price <- gsub('[$]', '', Dallas_cleaned$price)
-Dallas_cleaned$price <- gsub('[,]', '', Dallas_cleaned$price)
-Dallas_cleaned$price <- gsub('[.]', '', Dallas_cleaned$price)
-Dallas_cleaned$price <- as.numeric(Dallas_cleaned$price)
-Dallas_cleaned$price <- Dallas_cleaned$price / 100
-
-
-#clean price column Chicago 
-Chicago_cleaned$price <- gsub('[$]', '', Chicago_cleaned$price)
-Chicago_cleaned$price <- gsub('[,]', '', Chicago_cleaned$price)
-Chicago_cleaned$price <- gsub('[.]', '', Chicago_cleaned$price)
-Chicago_cleaned$price <- as.numeric(Chicago_cleaned$price)
-Chicago_cleaned$price <- Chicago_cleaned$price / 100
-
-#clean price column Mexico 
-Mexico_cleaned$price <- gsub('[$]', '', Mexico_cleaned$price)
-Mexico_cleaned$price <- gsub('[,]', '', Mexico_cleaned$price)
-Mexico_cleaned$price <- gsub('[.]', '', Mexico_cleaned$price)
-Mexico_cleaned$price <- as.numeric(Mexico_cleaned$price)
-Mexico_cleaned$price <- Mexico_cleaned$price / 100
 
 #subset, filter for dates one month before and after the concert for Mexico and filter out price outliers.
 Mexico_cleaned <- Mexico_merged %>% 
@@ -79,6 +58,28 @@ Dallas_cleaned$distance <- earth.dist(Dallas_cleaned$longitude, Dallas_cleaned$l
 # Chicago (coordinates of Soldier Field are -87.617256, 41.862366)
 Chicago_cleaned$DuringConcert <- Chicago_cleaned$date == as.Date("2022-05-28") | Chicago_cleaned$date == as.Date("2022-05-29")
 Chicago_cleaned$distance <- earth.dist(Chicago_cleaned$longitude, Chicago_cleaned$latitude, -87.617256, 41.862366)
+
+#clean price column Dallas
+Dallas_cleaned$price <- gsub('[$]', '', Dallas_cleaned$price)
+Dallas_cleaned$price <- gsub('[,]', '', Dallas_cleaned$price)
+Dallas_cleaned$price <- gsub('[.]', '', Dallas_cleaned$price)
+Dallas_cleaned$price <- as.numeric(Dallas_cleaned$price)
+Dallas_cleaned$price <- Dallas_cleaned$price / 100
+
+
+#clean price column Chicago 
+Chicago_cleaned$price <- gsub('[$]', '', Chicago_cleaned$price)
+Chicago_cleaned$price <- gsub('[,]', '', Chicago_cleaned$price)
+Chicago_cleaned$price <- gsub('[.]', '', Chicago_cleaned$price)
+Chicago_cleaned$price <- as.numeric(Chicago_cleaned$price)
+Chicago_cleaned$price <- Chicago_cleaned$price / 100
+
+#clean price column Mexico 
+Mexico_cleaned$price <- gsub('[$]', '', Mexico_cleaned$price)
+Mexico_cleaned$price <- gsub('[,]', '', Mexico_cleaned$price)
+Mexico_cleaned$price <- gsub('[.]', '', Mexico_cleaned$price)
+Mexico_cleaned$price <- as.numeric(Mexico_cleaned$price)
+Mexico_cleaned$price <- Mexico_cleaned$price / 100
 
 #write output
 fwrite(Mexico_cleaned, file = "../../data/Mexico/Mexico_cleaned.csv", sep = ",", quote = TRUE )
