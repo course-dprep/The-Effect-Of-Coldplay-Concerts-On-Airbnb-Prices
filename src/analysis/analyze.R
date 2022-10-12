@@ -18,28 +18,37 @@ load("../../data/Chicago/Chicago_cleaned.csv")
 
 #run regressions 
 
-Dallas_reg <-   feols(price ~ DuringConcert +
+Dallas_reg <-   lm(price ~ DuringConcert +
                           distance + room_type +
                           accommodates, 
                         data = Dallas_cleaned)
+summary(Dallas_reg)
 
-Chicago_reg <-   feols(price ~ DuringConcert +
+Chicago_reg <-   lm(price ~ DuringConcert +
                          distance + room_type +
                          accommodates, 
                        data = Chicago_cleaned)
+summary(Chicago_reg)
 
-Mexico_reg <-   feols(price ~ DuringConcert+
+Mexico_reg <-   lm(price ~ DuringConcert+
                         distance + room_type +
                         accommodates, 
                       data = Mexico_cleaned)
+summary(Mexico_reg)
 
-stargazer(Mexico_reg, Dallas_reg, Chicago_reg, title="Effect of distance, date and room type ",
+# overview of the coefficient names
+
+names(Dallas_reg$coefficients)
+names(Chicago_reg$coefficients)
+names(Mexico_reg$coefficients)
+
+stargazer(Mexico_reg, Dallas_reg, Chicago_reg, 
+          type="html",
+          title="Effect of date, distance, and room type ",
           dep.var.caption = 'Price in dollars',
           dep.var.labels= '',
           column.labels = c('Mexico', 'Dallas', "Chicago"),
-          covariate.labels = c('distance', 'accommodates', 'Rented during concert',
-          ),
+          covariate.labels = c('During concert', 'Distance', 'Private room', 'Shared room', 'accommodates'),
           notes.label = 'Significance levels',
-          type = 'html', 
-          out='../../gen/analysis/output/regression_table')
+          out='../../gen/analysis/output/regression_table.txt')
 
