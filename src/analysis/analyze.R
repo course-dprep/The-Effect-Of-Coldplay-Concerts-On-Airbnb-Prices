@@ -17,13 +17,6 @@ load("../../data/Dallas/Dallas_cleaned.csv")
 load("../../data/Chicago/Chicago_cleaned.csv")
 
 #run regressions 
-Dallas_reg <-   feols(price ~ distance + 
-                        accommodates + DuringConcert, 
-                      data = Dallas_cleaned)
-
-Chicago_reg <-   feols(price ~ distance + 
-                         accommodates + DuringConcert, 
-                       data = Chicago_cleaned)
 
 Dallas_reg <-   feols(price ~ DuringConcert +
                           distance + room_type +
