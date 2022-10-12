@@ -220,6 +220,9 @@ In the next session, the results of the regression will be presented.
 For every city we have done the regression. All the results of the regressions can be found in the tables below: 
 
 
+The visualization of the results can be found in the plots below: 
+
+
 ### Conclusion
 
 For every city, we can find no effect of a Coldplay concert on the prices of an Airbnb. For some of the dates we can see an increase in price, but this is most likely caused by the fact that it is in the weekend. As can be seen in the plot, we see a regular increase and decrease in prices with no outstanding increase during the Coldplay concert in the city. Also the regression analysis does not show any significant price change for the dates of the Coldplay concerts. 
