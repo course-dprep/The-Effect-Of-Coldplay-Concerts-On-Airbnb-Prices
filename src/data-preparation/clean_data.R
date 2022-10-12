@@ -10,11 +10,13 @@ Dallas_merged <- read_csv("../../data/Dallas/Dallas_merged.csv")
 Chicago_merged <- read_csv("../../data/Chicago/Chicago_merged.csv")
 
 
-#subset, filter for dates one month before and after the concert for Mexico and filter out price outliers.
+#subset, filter for dates one month before and after the concert for Mexico and filter out price outliers and filter out 'Hotel rooms' to get same type of rooms as other cities.
 Mexico_cleaned <- Mexico_merged %>% 
   select(Identifier, latitude, longitude, room_type, accommodates, price, date) %>%
   filter(Mexico_merged$date > "2022-03-03" & Mexico_merged$date < "2022-05-07") %>%
-  filter(price < 9999)
+  filter(price < 9999) %>%
+  filter(room_type != 'Hotel room')
+  
 
 #subset, filter for dates one month before and after the concert for Dallas and filter out price outliers..
 Dallas_cleaned <- Dallas_merged %>%
@@ -22,11 +24,12 @@ Dallas_cleaned <- Dallas_merged %>%
   filter(Dallas_merged$date > "2022-04-06" & Dallas_merged$date < "2022-06-06") %>%
   filter(price < 9999)
 
-#subset, filter for dates one month before and after the concert for Chicago and filter out price outliers..
+#subset, filter for dates one month before and after the concert for Chicago and filter out price outliers and filter out 'Hotel rooms' to get same type of rooms as other cities.
 Chicago_cleaned <- Chicago_merged %>%
   select(Identifier, latitude, longitude, room_type, accommodates, price, date) %>%
   filter(Chicago_merged$date > "2022-04-28" & Chicago_merged$date < "2022-06-29") %>%
-  filter(price < 9999)
+  filter(price < 9999) %>%
+  filter(room_type != 'Hotel room')
 
 #calculate distance column 
 earth.dist <- function (long1, lat1, long2, lat2)
