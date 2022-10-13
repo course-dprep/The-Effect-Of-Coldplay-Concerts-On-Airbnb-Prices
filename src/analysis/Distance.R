@@ -1,3 +1,6 @@
+#import library
+library(readr)
+library(data.table)
 #code for measuring distance 
 
 Mexico_cleaned <- read_csv("../../data//Mexico/Mexico_cleaned.csv")
