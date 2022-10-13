@@ -1,5 +1,6 @@
 library(readr)
-
+#set timeout to 10000 to be able to circumvent 60 sec timeout
+options(timeout = 10000)
 #create data repository 
 dir.create('../../data')
 dir.create('../../data/Dallas')  
@@ -26,4 +27,4 @@ download.file(url = 'http://data.insideairbnb.com/mexico/df/mexico-city/2022-06-
               destfile = '../../data/Mexico/Mexico_listings.csv')
 download.file(url = 'http://data.insideairbnb.com/mexico/df/mexico-city/2022-06-21/data/reviews.csv',
               destfile = '../../data/Mexico/Mexico_reviews.csv')
-
+ 
