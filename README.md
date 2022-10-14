@@ -8,7 +8,7 @@ With this dataset, the impact of big events on Airbnb prices in a city are analy
 
 ## Method and results
 
-To get our results, data from [insideairbnb](http://insideairbnb.com/get-the-data) is retrieved. Via [songkick](http://songkick.com), we found the locations where Coldplay's concerts took place. From those locations, three were available via the insideairbnb database. The datasets "listing" and "reviews" are merged to create a new dataset. Before analysis, this new dataset is filtered for interesting variables and cleaned up. To measure this effect of the distance between the event location and the Airbnb, a new variable "distance" is created in the cleaned dataset. With this cleaned up dataset, it is possible to retrieve usefull information concerning our research questions, using a regression analysis.
+To get our results, data from [insideairbnb](http://insideairbnb.com/get-the-data) is retrieved. Via [songkick](http://songkick.com), we found the locations where Coldplay's concerts took place. From those locations, three were available via the [insideairbnb](http://insideairbnb.com/get-the-data) database. The datasets "listing" and "reviews" are merged to create a new dataset. Before analysis, this new dataset is filtered for interesting variables and cleaned up. To measure this effect of the distance between the event location and the Airbnb, a new variable "distance" is created in the cleaned dataset. With this cleaned up dataset, it is possible to retrieve usefull information concerning our research questions, using a regression analysis.
 
 For all three cities that were analyzed, we did not find significant results in price changes during the Coldplay concerts. Peaks in prices that were found, mostly arised during weekends. Changes in prices were relatively constant over time. Furthermore, for the moderating effects no significant results were found as well. The distance between the event location and the Airbnb did not have an effect on price changes, same as the roomtype. An explanation for this might be found in the size of the city, relative to the event. Because of the size of the city, demand in Airbnbs/alternatives might not be impacted too much by even big events like a Coldplay concert. 
 
@@ -46,4 +46,9 @@ Point interested users to any related literature and/or documentation.
 
 ## About
 
-Explain who has contributed to the repository. You can say it has been part of a class you've taken at Tilburg University.
+This repository was created as a part of the Data Preparation and Workflow Managemant course in the Marketing Analytics Master of Tilburg University. The following students contributed to the creation of this repository:
+
+* Thierry Lahaije
+* Niels Rahder
+* Eveline de Veld
+* Thomas van Dijk
