@@ -2,7 +2,9 @@
 
 To what extent are Airbnb prices affected by big events and are roomtype and distance of influence?
 
-## Motivation
+![](https://bestmusicsheet.com/wp-content/uploads/2021/11/Coldplay-World-Concert-Tour-in-2022-3.jpeg)
+
+## Research Motivation
 
 With this dataset, the impact of big events on Airbnb prices in a city are analyzed. More specific; the impact of the Coldplay Worldtour on 3 major cities (Chicago, Dallas and Mexico City). Within this relation, the influence of the type of room and the distance between the Airbnb and the event are studied as well. This study is interesting for both Airbnb owner as well as Airbnb itself to check whether a price increase during a big event is feasible.
 
@@ -15,12 +17,11 @@ For all three cities that were analyzed, we did not find significant results in 
 ## Repository overview
 
 The directory structure is as follows:
-
+```
 .
 ├── .github
 ├── src
 |   ├── analysis
-|       ├── Distance.R
 |       ├── analyze.R
 |       ├── graph.R
 |       ├── makefile
@@ -33,11 +34,13 @@ The directory structure is as follows:
 ├── README.md
 ├── RMarkdown.Rmd
 └──  Makefile
+```
 
 ## Running instructions
 
-Explain to potential users how to run/replicate your workflow. If necessary, touch upon the required input data, which secret credentials are required (and how to obtain them), which software tools are needed to run the workflow (including links to the installation instructions), and how to run the workflow.
+All of the data, analysis and plots can be run using the main makefile. R will make sure the proper packages will be installed if necessary. To make the main makefile run, Windows OS users will have to install [Make](https://gnuwin32.sourceforge.net/packages/make.htm). For Mac and Linux OS users, this will automatically be installed.When Make is installed, it is possible to run the makefile in RStudio. 
 
+First, type "make -n" in the Terminal. R wil then show you everything it will run. If you type in "make", R wil run all the code. This can take some time. When R is done, all the output will be generated.
 
 ## More resources
 
