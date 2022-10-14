@@ -17,12 +17,7 @@ For all three cities that were analyzed, we did not find significant results in 
 ## Repository overview
 
 The directory structure is as follows:
-<<<<<<< HEAD
-=======
-
->>>>>>> 2db7290d5509279ad155d381beeeb7b8c425634b
 ```
-.
 ├── .github
 ├── src
 |   ├── analysis
@@ -46,10 +41,11 @@ All of the data, analysis and plots can be run using the main makefile. R will m
 
 First, type "make -n" in the Terminal. R wil then show you everything it will run. If you type in "make", R wil run all the code. This can take some time. When R is done, all the output will be generated.
 
-## More resources
+## Resources
 
-Point interested users to any related literature and/or documentation.
-
+Relevant resources include:
+* [insideairbnb](http://insideairbnb.com/get-the-data)
+* [songkick](http://songkick.com)
 
 ## About
 
