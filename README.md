@@ -1,8 +1,3 @@
-# Airbnb Prices during the Coldplay Worldtour 'Music of the Spheres' **Maybe change project name as well**
-**Only summarize the research --> this is how the project should look like, not the readme** --> main results in bullet point format, maybe screenshots. 
-explains the project’s goal, and provides instructions to potential contributors/replicators on how to run the project.
-Better still, if you link to other files within the repository so that the reader not only knows what the project is about but also which files are a priority.
-
 # "Music of the Spheres": The effect of big events on Airbnb prices.
 
 To what extent are Airbnb prices affected by big events and are roomtype and distance of influence?
@@ -13,29 +8,31 @@ With this dataset, the impact of big events on Airbnb prices in a city are analy
 
 ## Method and results
 
-First, introduce and motivate your chosen method, and explain how it contributes to solving the research question/business problem.
+To get our results, data from [insideairbnb](http://insideairbnb.com/get-the-data) is retrieved. Via [songkick](http://songkick.com), we found the locations where Coldplay's concerts took place. From those locations, three were available via the insideairbnb database. The datasets "listing" and "reviews" are merged to create a new dataset. Before analysis, this new dataset is filtered for interesting variables and cleaned up. To measure this effect of the distance between the event location and the Airbnb, a new variable "distance" is created in the cleaned dataset. With this cleaned up dataset, it is possible to retrieve usefull information concerning our research questions, using a regression analysis.
 
-To get our results, data from [insideairbnb](http://insideairbnb.com/get-the-data) is retrieved. Via [songkick](http://songkick.com), we found the locations where Coldplay's concerts took place. From those locations, three were available via the insideairbnb database. The datasets "listing" and "reviews" are merged to create a new dataset. Before analysis, this new dataset is filtered for interesting variables and cleaned up. To measure this effect of the distance between the event location and the Airbnb, a new variable "distance" is created in the cleaned dataset. With this cleaned up dataset, it is possible to retrieve usefull information concerning our research quetions.
-
-Second, summarize your results concisely. Make use of subheaders where appropriate.
-
-
+For all three cities that were analyzed, we did not find significant results in price changes during the Coldplay concerts. Peaks in prices that were found, mostly arised during weekends. Changes in prices were relatively constant over time. Furthermore, for the moderating effects no significant results were found as well. The distance between the event location and the Airbnb did not have an effect on price changes, same as the roomtype. An explanation for this might be found in the size of the city, relative to the event. Because of the size of the city, demand in Airbnbs/alternatives might not be impacted too much by even big events like a Coldplay concert. 
 
 ## Repository overview
 
-Provide an overview of the directory structure and files, for example:
+The directory structure is as follows:
 
+.
+├── .github
+├── src
+|   ├── analysis
+|       ├── Distance.R
+|       ├── analyze.R
+|       ├── graph.R
+|       ├── makefile
+|   ├── data-preparation
+|       ├── clean_data.R
+|       ├── download_data.R
+|       ├── makefile
+|       ├── merge_data.R
+├── .gitignore
 ├── README.md
-├── data
-├── gen
-│   ├── analysis
-│   ├── data-preparation
-│   └── paper
-└── src
-    ├── analysis
-    ├── data-preparation
-    └── paper
-
+├── RMarkdown.Rmd
+└──  Makefile
 
 ## Running instructions
 
