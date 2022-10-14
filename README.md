@@ -16,6 +16,7 @@ For all three cities that were analyzed, we did not find significant results in 
 
 The directory structure is as follows:
 
+```
 .
 ├── .github
 ├── src
@@ -33,6 +34,7 @@ The directory structure is as follows:
 ├── README.md
 ├── RMarkdown.Rmd
 └──  Makefile
+```
 
 ## Running instructions
 
