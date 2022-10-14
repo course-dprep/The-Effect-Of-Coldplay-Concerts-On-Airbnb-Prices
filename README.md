@@ -17,6 +17,10 @@ For all three cities that were analyzed, we did not find significant results in 
 ## Repository overview
 
 The directory structure is as follows:
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2db7290d5509279ad155d381beeeb7b8c425634b
 ```
 .
 ├── .github
