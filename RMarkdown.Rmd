@@ -222,6 +222,8 @@ For every city we have done the regression. All the results of the regressions c
 
 The visualization of the results can be found in the plots below: 
 
+![plot 1 chicago](gen/output/graphs/Chicago/Chicago_)
+
 
 ### Conclusion
 
@@ -234,9 +236,58 @@ There was no moderating effect of the type of the room as well. For all cities w
 The reason why there is no result, might be due to the fact that we analyzed three very large cities. At the Foro Sol stadium (Mexico) there is a capacity of 65,000 people (Wikipedia contributers, 2022), compared to a population of 22 million people (Mexico City, Mexico Metro Area Population 1950-2022, n.d.). The same for Dallas: capacity of 80,000 people in the Cotton Bowl stadium (Wikipedia contributors, 2022) and the population consists of more than 1,3 million people (Wikipedia contributors, 2022), and Chicago: capacity of 61,500 people in the Soldier Field stadium (Wikipedia contributors, 2022) and a population of 8,9 million people (Chicago Metro Area Population 1950-2022, n.d.). The first reason why there is no effect of Coldplay concerts on Airbnb prices is the fact that the capacity is relatively small compared to the city populations. Therefore using our analysis and the [insideairbnb](http://insideairbnb.com/get-the-data) datasets, it might be interesting to study any large event in a smaller city, to check for any significance. The second reason is that probably most people attending the Coldplay concert already lives in the city and chooses to stay at home after the concert instead of booking an Airbnb.
 
 ## 4. Repository
-### Files
+### files & Structure
 
-### Structure
+├── .github
+├── src
+|   ├── analysis
+|       ├── analyze.R
+|       ├── graph.R
+|       ├── makefile
+|   ├── data-preparation
+|       ├── clean_data.R
+|       ├── download_data.R
+|       ├── makefile
+|       ├── merge_data.R
+├── data
+|       ├── Chicago
+|           ├── Chicago_listings.csv
+|           ├── Chicago_reviews.csv
+|       ├── Mexico
+|           ├── Mexico_listings.csv
+|           ├── Mexico_reviews.csv
+|       ├── Dallas
+|           ├── Dallas_listings.csv
+|           ├── Dallas_reviews.csv
+├── gen
+|   ├── output
+|       ├── graph
+|           ├── Chicago
+|               ├── Chicago_distance_price.png
+|               ├── Chicago_mean_price.png
+|               ├── Chicago_room_type.png
+|           ├── Mexico
+|               ├── Mexico_distance_price.png
+|               ├── Mexico_mean_price.png
+|               ├── Mexico_room_type.png
+|           ├── Dallas
+|               ├── Dallas_distance_price.png
+|               ├── Dallas_mean_price.png
+|               ├── Dallas_room_type.png
+|       ├── regression
+|           ├── regression_table.txt
+|   ├── temp      
+|       ├── Dallas
+|           ├── Dallas_merged.csv
+|       ├── Chicago
+|           ├── Chicago_merged.csv
+|       ├── Mexico
+|           ├── Mexico_merged.csv
+├── .gitignore
+├── README.md
+├── RMarkdown.Rmd
+└── Makefile
+
 
 ## 5. References
 
