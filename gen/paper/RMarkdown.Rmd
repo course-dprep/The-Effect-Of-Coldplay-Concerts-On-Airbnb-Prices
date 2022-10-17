@@ -1,0 +1,304 @@
+---
+title: "Airbnb prices during concerts of the Coldplay world tour 'Music of the Spheres'"
+author: "Niels Rahder, Thomas van Dijk, Eveline de Veld & Thierry Lahaije"
+date: "2022-10-11"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Table of contents
+
+* #### Our Project
+  + Description and motivation of the research
+  + Relevance
+  + Problem statement
+  + Research questions
+  + Conceptual model
+* #### Method
+  + Data
+  + Variables
+  + Research method
+* #### Results and conclusion
+  + Results
+  + Conclusion
+* #### Repository
+  + Files
+  + Structure
+* #### References
+
+## Our Project
+### Description and motivation of the research
+
+In our research we study the price changes of Airbnb's in different cities in the period of a Coldplay concert of the worldtour 'Music of the Spheres'. We will look at the prices during a Coldplay concert and compare those to prices in the month before and after the concerts to study the price differences caused by the Coldplay concerts. Furthermore, we will look at the influence of the type of room, and the influence of the distance between an Airbnb and the place of the concert on the relationship of the concert on the price of the Airbnb.
+
+Since the tour of Coldplay started in March 2022 and will continue till July 2023, we are not able to study all cities. However, results of our study can help other cities by predicting prices of Airbnb's. The cities we will study are Mexico City, Dallas, and Chicago.
+
+We will use data about the listings from Airbnb retrieved by [insideairbnb](http://insideairbnb.com/get-the-data), and to find the concert dates we will use data from [songkick](http://songkick.com).
+
+### Relevance
+
+We will look at changes in prices during Coldplay concerts in three different cities. Our study will be relevant for Airbnb hosts. Hosts will be able to determine the impact of big events in their city on Airbnb prices. Furthermore, we study the effect for only three cities and the specific Coldplay concert will continue to tour for some time in future in other cities. Whenever there is an effect of the concerts on the prices for Airbnb's, other cities can raise there prices in the period of the upcoming Coldplay concert.
+
+Besides that, we will look at the influence of distance between the place of the concert and the place of the Airbnb and the influence of the type of the room. This gives insight in whether the distance between an Airbnb and the place of a big event and/or whether the type of a room during a typical event influences the price. So, Airbnb's can have different price changes during a big event and should maybe react different than other Airbnb's.
+
+### Problem statement
+
+"To what extent do Coldplay concerts affect the prices of Airbnb's, and to what extent does the distance between an Airbnb and the place of the concert and the type of room influence the relationship between Coldplay concerts and the prices of Airbnb's?" 
+
+## Research questions
+
+1. "To what extent do prices of Airbnb's differ during Coldplay concerts in the cities Dallas, Chicago, and Mexico City?"
+2. "To what extent does the distance between an Airbnb and the place of the concert influence the relationship between the prices of an Airbnb during a Coldplay concert?"
+3. "To what extent does the type of the room influence the relationship between the prices of an Airbnb during a Coldplay concert?
+
+## Conceptual model
+![Conceptual model used in this study](https://user-images.githubusercontent.com/38066744/195048115-211db366-c55f-4ff3-8ca2-dd5b18a81b26.png)
+
+```{R install packages, include=FALSE}
+library(readr)
+library(dplyr)
+library(data.table)
+library(tidyr)
+library(fixest)
+library(broom)
+library(ggplot2)
+library(stargazer)
+```
+
+# 2. Method
+## Data
+First, we retreived data from "http://insideairbnb.com/get-the-data" to get the data from Airbnb listings. The data from this website was at the moment of starting this assignment only available till mid June 2022. Therefore, we had to check in which cities a Coldplay concert has taken place before mid June 2022. To find the dates of all Coldplay concerts of the tour 'Music of the Spheres' we used "http://songkick.com". We then found that the only suitable cities for our dataset are Mexico City, Dallas, and Chicago. To download the data, we needed to install the package 'readr'. 
+
+After retrieving the data, we continued to merge the 'listing' and 'reviews' datasets for each country. For merging the datasets, we needed to download the 'dplyr' and the 'data.table' packages. Then, we cleaned the data by removing unneccassary variables in the dataset. We reduced the dataset by filtering for the dates one month before and one month after te Coldplay concert for each city and we removed outliers by removing prices above $9999.00. We also created new variables, including the distance between the Airbnb listing and the place of the Coldplay concert, and a dummy variable of whether the listing was during the Coldplay concerts or not. An overview of the variables can be found in the next section. For cleaning the data, we needed to install the 'tidyr' package.
+
+```{R merge data, include=FALSE}
+# Load datasets
+Dallas_listings <- read_csv('data/Dallas/Dallas_listings.csv')
+Dallas_reviews <- read_csv('data/Dallas/Dallas_reviews.csv')
+
+Chicago_listings <- read_csv('data/Chicago/Chicago_listings.csv')
+Chicago_reviews <- read_csv('data/Chicago/Chicago_reviews.csv')
+
+Mexico_listings <- read_csv('data//Mexico/Mexico_listings.csv')
+Mexico_reviews <- read_csv('data/Mexico/Mexico_reviews.csv')
+
+
+#rename columns to 'Identifier' and join Dallas
+Dallas_reviews <- Dallas_reviews %>% 
+  rename('Identifier' = listing_id)
+Dallas_listings <- Dallas_listings %>%
+  rename('Identifier' = id)
+
+Dallas_merged <- left_join(Dallas_listings, Dallas_reviews, by = 'Identifier') #have to check which join we want
+
+#rename columns to 'Identifier' and join Chicago 
+Chicago_reviews <- Chicago_reviews %>%
+  rename('Identifier' = listing_id)
+Chicago_listings <- Chicago_listings %>%
+  rename('Identifier' = id)
+
+Chicago_merged <- left_join(Chicago_listings, Chicago_reviews, by = 'Identifier')
+
+#rename columns to 'Identifier' and join Mexico
+Mexico_reviews <- Mexico_reviews %>%
+  rename('Identifier' = listing_id)
+Mexico_listings <- Mexico_listings %>%
+  rename('Identifier' = id)
+
+Mexico_merged <- left_join(Mexico_listings, Mexico_reviews, by = 'Identifier')
+
+fwrite(Mexico_merged, file = "data/Mexico/Mexico_merged.csv", sep = ",", quote = TRUE)
+fwrite(Dallas_merged, file = "data/Dallas/Dallas_merged.csv", sep = ",", quote = TRUE)
+fwrite(Chicago_merged, file = "data/Chicago/Chicago_merged.csv", sep = ",", quote = TRUE)
+
+```
+
+```{R clean data, include=FALSE}
+
+#subset, filter for dates one month before and after the concert for Mexico and filter out price outliers.
+Mexico_cleaned <- Mexico_merged %>% 
+  select(Identifier, latitude, longitude, room_type, accommodates, price, date) %>%
+  filter(Mexico_merged$date > "2022-03-03" & Mexico_merged$date < "2022-05-07") %>%
+  filter(price < 9999)
+
+#subset, filter for dates one month before and after the concert for Dallas and filter out price outliers..
+Dallas_cleaned <- Dallas_merged %>%
+  select(Identifier, latitude, longitude, room_type, accommodates, price, date) %>%
+  filter(Dallas_merged$date > "2022-04-06" & Dallas_merged$date < "2022-06-06") %>%
+  filter(price < 9999)
+
+#subset, filter for dates one month before and after the concert for Chicago and filter out price outliers..
+Chicago_cleaned <- Chicago_merged %>%
+  select(Identifier, latitude, longitude, room_type, accommodates, price, date) %>%
+  filter(Chicago_merged$date > "2022-04-28" & Chicago_merged$date < "2022-06-29") %>%
+  filter(price < 9999)
+
+#calculate distance column 
+earth.dist <- function (long1, lat1, long2, lat2)
+{
+  rad <- pi/180
+  a1 <- lat1 * rad
+  a2 <- long1 * rad
+  b1 <- lat2 * rad
+  b2 <- long2 * rad
+  dlon <- b2 - a2
+  dlat <- b1 - a1
+  a <- (sin(dlat/2))^2 + cos(a1) * cos(b1) * (sin(dlon/2))^2
+  c <- 2 * atan2(sqrt(a), sqrt(1 - a))
+  R <- 6378.145
+  d <- R * c
+  return(d)
+}
+
+# create variables for dates during the concert and distance
+
+# Mexico (coordinates of Foro Sol are -99.052724, 19.241055)
+Mexico_cleaned$DuringConcert <- Mexico_cleaned$date == as.Date("2022-04-03") | Mexico_cleaned$date == as.Date("2022-04-04") | Mexico_cleaned$date == as.Date("2022-04-06")| Mexico_cleaned$date == as.Date("2022-04-07") 
+Mexico_cleaned$distance <- earth.dist(Mexico_cleaned$longitude, Mexico_cleaned$latitude, -99.052724, 19.241055)
+
+# Dallas (coordinates of Cotton Bowl stadium are -96.452099, 32.462819)
+Dallas_cleaned$DuringConcert <- Dallas_cleaned$date == as.Date("2022-05-06")
+Dallas_cleaned$distance <- earth.dist(Dallas_cleaned$longitude, Dallas_cleaned$latitude, -96.452099, 32.462819)
+
+# Chicago (coordinates of Soldier Field are -87.617256, 41.862366)
+Chicago_cleaned$DuringConcert <- Chicago_cleaned$date == as.Date("2022-05-28") | Chicago_cleaned$date == as.Date("2022-05-29")
+Chicago_cleaned$distance <- earth.dist(Chicago_cleaned$longitude, Chicago_cleaned$latitude, -87.617256, 41.862366)
+
+#clean price column Dallas
+Dallas_cleaned$price <- gsub('[$]', '', Dallas_cleaned$price)
+Dallas_cleaned$price <- gsub('[,]', '', Dallas_cleaned$price)
+Dallas_cleaned$price <- gsub('[.]', '', Dallas_cleaned$price)
+Dallas_cleaned$price <- as.numeric(Dallas_cleaned$price)
+Dallas_cleaned$price <- Dallas_cleaned$price / 100
+
+
+#clean price column Chicago 
+Chicago_cleaned$price <- gsub('[$]', '', Chicago_cleaned$price)
+Chicago_cleaned$price <- gsub('[,]', '', Chicago_cleaned$price)
+Chicago_cleaned$price <- gsub('[.]', '', Chicago_cleaned$price)
+Chicago_cleaned$price <- as.numeric(Chicago_cleaned$price)
+Chicago_cleaned$price <- Chicago_cleaned$price / 100
+
+#clean price column Mexico 
+Mexico_cleaned$price <- gsub('[$]', '', Mexico_cleaned$price)
+Mexico_cleaned$price <- gsub('[,]', '', Mexico_cleaned$price)
+Mexico_cleaned$price <- gsub('[.]', '', Mexico_cleaned$price)
+Mexico_cleaned$price <- as.numeric(Mexico_cleaned$price)
+Mexico_cleaned$price <- Mexico_cleaned$price / 100
+
+#write output
+fwrite(Mexico_cleaned, file = "data/Mexico/Mexico_cleaned.csv", sep = ",", quote = TRUE )
+fwrite(Dallas_cleaned, file = "data/Dallas/Dallas_cleaned.csv", sep = ",", quote = TRUE)
+fwrite(Chicago_cleaned, file = "data/Chicago/Chicago_cleaned.csv", sep = ",", quote = TRUE)
+```
+## Variables
+In the following table, a clear overview of all used variables is shown:
+
+| **Variable name**                        | **Variable explanation**                                     |
+| ---------------------------------------- |--------------------------------------------------------------|
+| price_in_dollars                   (Y)   | Price of the Airbnb in dollars                               |
+| date                               (X1)  | The date of the listing                                      |
+| DuringConcert                      (X2)  | Dummy whether the date is during the concert                 |
+| distance                           (X3)  | The distance between the Airbnb and the place of the concert |
+| room_type                          (X4)  | The type of the room                                         |
+| accommodates                       (X5)  | The number of people staying at the Airbnb                   |
+
+## Research method
+
+To study the effect of Coldplay concerts on the price of an Airbnb influenced by the distance between the place of the Coldplay concert and the place of the Airbnb and the type of the room, we will use a regression. The dependent variable is the Airbnb price in dollars, and the independent variables are the 'X' variables in the table above. We have also looked at the interaction of the interaction between DuringConcert and distance (X6), and the interaction between DuringConcert and room_type (X7). Which gives us the following regression: 
+
+Y = b0 + b1X1 + b2X2 + b3X3 + b4X4 + b5X5 + b6X6 + b7X7
+
+In the next session, the results of the regression will be presented. 
+
+## 3. Results and conclusion
+### Results
+
+For every city we have done the regression. All the results of the regressions can be found in the tables below: 
+
+
+The visualization of the results can be found in the plots below: 
+
+![plot 1 chicago](gen/output/graphs/Chicago/Chicago_)
+
+
+### Conclusion
+
+For every city, we can find no effect of a Coldplay concert on the prices of an Airbnb. For some of the dates we can see an increase in price, but this is most likely caused by the fact that it is in the weekend. As can be seen in the plot, we see a regular increase and decrease in prices with no outstanding increase during the Coldplay concert in the city. Also the regression analysis does not show any significant price change for the dates of the Coldplay concerts. 
+
+When looking at the moderating effect of distance, we cannot find an effect as well. As can be seen in the graphs, there is no relationship between the distance and the price for each city. This is probably caused by the fact that most stadiums where the concert took place is somewhat out of the city center, or because of the great sizes of the cities. And since we cannot find a main effect between the Coldplay concerts and the price of an Airbnb, it is likely that people prefer an Airbnb close to the city center instead of close to the place of the concert. The regression analysis does not show an influence of distance as well. 
+
+There was no moderating effect of the type of the room as well. For all cities we see the highest price for entire 'home/apartment', which makes sense because these Airbnb's are larger. When going to a concert it is likely to rent a smaller Airbnb because you are with few other people. Whenever the type of the room had an influence on the effect of Coldplay concerts on the price of an Airbnb, this would have resulted in higher prices for private or shared rooms. Which, as can be seen in the bar graphs, is not the case. Also for the influence of type of room, the regression analysis shows no influence on the effect of Coldplay concerts on price of the Airbnb. 
+
+The reason why there is no result, might be due to the fact that we analyzed three very large cities. At the Foro Sol stadium (Mexico) there is a capacity of 65,000 people (Wikipedia contributers, 2022), compared to a population of 22 million people (Mexico City, Mexico Metro Area Population 1950-2022, n.d.). The same for Dallas: capacity of 80,000 people in the Cotton Bowl stadium (Wikipedia contributors, 2022) and the population consists of more than 1,3 million people (Wikipedia contributors, 2022), and Chicago: capacity of 61,500 people in the Soldier Field stadium (Wikipedia contributors, 2022) and a population of 8,9 million people (Chicago Metro Area Population 1950-2022, n.d.). The first reason why there is no effect of Coldplay concerts on Airbnb prices is the fact that the capacity is relatively small compared to the city populations. Therefore using our analysis and the [insideairbnb](http://insideairbnb.com/get-the-data) datasets, it might be interesting to study any large event in a smaller city, to check for any significance. The second reason is that probably most people attending the Coldplay concert already lives in the city and chooses to stay at home after the concert instead of booking an Airbnb.
+
+## 4. Repository
+### files & Structure
+
+├── .github
+├── src
+|   ├── analysis
+|       ├── analyze.R
+|       ├── graph.R
+|       ├── makefile
+|   ├── data-preparation
+|       ├── clean_data.R
+|       ├── download_data.R
+|       ├── makefile
+|       ├── merge_data.R
+├── data
+|       ├── Chicago
+|           ├── Chicago_listings.csv
+|           ├── Chicago_reviews.csv
+|       ├── Mexico
+|           ├── Mexico_listings.csv
+|           ├── Mexico_reviews.csv
+|       ├── Dallas
+|           ├── Dallas_listings.csv
+|           ├── Dallas_reviews.csv
+├── gen
+|   ├── output
+|       ├── graph
+|           ├── Chicago
+|               ├── Chicago_distance_price.png
+|               ├── Chicago_mean_price.png
+|               ├── Chicago_room_type.png
+|           ├── Mexico
+|               ├── Mexico_distance_price.png
+|               ├── Mexico_mean_price.png
+|               ├── Mexico_room_type.png
+|           ├── Dallas
+|               ├── Dallas_distance_price.png
+|               ├── Dallas_mean_price.png
+|               ├── Dallas_room_type.png
+|       ├── regression
+|           ├── regression_table.txt
+|   ├── temp      
+|       ├── Dallas
+|           ├── Dallas_merged.csv
+|       ├── Chicago
+|           ├── Chicago_merged.csv
+|       ├── Mexico
+|           ├── Mexico_merged.csv
+├── .gitignore
+├── README.md
+├── RMarkdown.Rmd
+└── Makefile
+
+
+## 5. References
+
+Chicago Metro Area Population 1950-2022. (n.d.). MacroTrends. Retrieved October 12, 2022, from https://www.macrotrends.net/cities/22956/chicago/population
+
+Mexico City, Mexico Metro Area Population 1950-2022. (n.d.). MacroTrends. Retrieved October 12, 2022, from https://www.macrotrends.net/cities/21853/mexico-city/population
+
+Wikipedia-contributors. (2022, April 5). Cotton Bowl. Wikipedia. Retrieved October 12, 2022, from https://nl.wikipedia.org/wiki/Cotton_Bowl
+
+Wikipedia contributors. (2022, October 11). Dallas. Wikipedia. Retrieved October 12, 2022, from https://en.wikipedia.org/wiki/Dallas
+
+Wikipedia contributors. (2022, October 9). Foro Sol. Wikipedia. Retrieved October 12, 2022, from          https://en.wikipedia.org/wiki/Foro_Sol
+
+Wikipedia contributors. (2022, September 29). Soldier Field. Wikipedia. Retrieved October 12, 2022, from https://en.wikipedia.org/wiki/Soldier_Field
