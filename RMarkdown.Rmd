@@ -76,14 +76,14 @@ After retrieving the data, we continued to merge the 'listing' and 'reviews' dat
 
 ```{R merge data, include=FALSE}
 # Load datasets
-Dallas_listings <- read_csv('../../data/Dallas/Dallas_listings.csv')
-Dallas_reviews <- read_csv('../../data/Dallas/Dallas_reviews.csv')
+Dallas_listings <- read_csv('data/Dallas/Dallas_listings.csv')
+Dallas_reviews <- read_csv('data/Dallas/Dallas_reviews.csv')
 
-Chicago_listings <- read_csv('../../data/Chicago/Chicago_listings.csv')
-Chicago_reviews <- read_csv('../../data/Chicago/Chicago_reviews.csv')
+Chicago_listings <- read_csv('data/Chicago/Chicago_listings.csv')
+Chicago_reviews <- read_csv('data/Chicago/Chicago_reviews.csv')
 
-Mexico_listings <- read_csv('../../data//Mexico/Mexico_listings.csv')
-Mexico_reviews <- read_csv('../../data/Mexico/Mexico_reviews.csv')
+Mexico_listings <- read_csv('data//Mexico/Mexico_listings.csv')
+Mexico_reviews <- read_csv('data/Mexico/Mexico_reviews.csv')
 
 
 #rename columns to 'Identifier' and join Dallas
@@ -110,9 +110,9 @@ Mexico_listings <- Mexico_listings %>%
 
 Mexico_merged <- left_join(Mexico_listings, Mexico_reviews, by = 'Identifier')
 
-fwrite(Mexico_merged, file = "../../data/Mexico/Mexico_merged.csv", sep = ",", quote = TRUE)
-fwrite(Dallas_merged, file = "../../data/Dallas/Dallas_merged.csv", sep = ",", quote = TRUE)
-fwrite(Chicago_merged, file = "../../data/Chicago/Chicago_merged.csv", sep = ",", quote = TRUE)
+fwrite(Mexico_merged, file = "data/Mexico/Mexico_merged.csv", sep = ",", quote = TRUE)
+fwrite(Dallas_merged, file = "data/Dallas/Dallas_merged.csv", sep = ",", quote = TRUE)
+fwrite(Chicago_merged, file = "data/Chicago/Chicago_merged.csv", sep = ",", quote = TRUE)
 
 ```
 
@@ -190,9 +190,9 @@ Mexico_cleaned$price <- as.numeric(Mexico_cleaned$price)
 Mexico_cleaned$price <- Mexico_cleaned$price / 100
 
 #write output
-fwrite(Mexico_cleaned, file = "../../data/Mexico/Mexico_cleaned.csv", sep = ",", quote = TRUE )
-fwrite(Dallas_cleaned, file = "../../data/Dallas/Dallas_cleaned.csv", sep = ",", quote = TRUE)
-fwrite(Chicago_cleaned, file = "../../data/Chicago/Chicago_cleaned.csv", sep = ",", quote = TRUE)
+fwrite(Mexico_cleaned, file = "data/Mexico/Mexico_cleaned.csv", sep = ",", quote = TRUE )
+fwrite(Dallas_cleaned, file = "data/Dallas/Dallas_cleaned.csv", sep = ",", quote = TRUE)
+fwrite(Chicago_cleaned, file = "data/Chicago/Chicago_cleaned.csv", sep = ",", quote = TRUE)
 ```
 ## Variables
 In the following table, a clear overview of all used variables is shown:
@@ -251,23 +251,3 @@ Wikipedia contributors. (2022, October 11). Dallas. Wikipedia. Retrieved October
 Wikipedia contributors. (2022, October 9). Foro Sol. Wikipedia. Retrieved October 12, 2022, from          https://en.wikipedia.org/wiki/Foro_Sol
 
 Wikipedia contributors. (2022, September 29). Soldier Field. Wikipedia. Retrieved October 12, 2022, from https://en.wikipedia.org/wiki/Soldier_Field
-
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
-```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
