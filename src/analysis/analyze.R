@@ -7,9 +7,9 @@ library(data.table)
 library(stargazer)
 
 #import data 
-Mexico_cleaned <- read_csv("data/Mexico/Mexico_cleaned.csv")
-Dallas_cleaned <- read_csv("/data/Dallas/Dallas_cleaned.csv")
-Chicago_cleaned <- read_csv("data/Chicago/Chicago_cleaned.csv")
+Mexico_cleaned <- read_csv("../../data/Mexico/Mexico_cleaned.csv")
+Dallas_cleaned <- read_csv("../../data/Dallas/Dallas_cleaned.csv")
+Chicago_cleaned <- read_csv("../../data/Chicago/Chicago_cleaned.csv")
 
 #run regressions 
 Dallas_reg <-   lm(price ~ DuringConcert +
@@ -36,5 +36,5 @@ stargazer(Mexico_reg, Dallas_reg, Chicago_reg,
           column.labels = c('Mexico', 'Dallas', "Chicago"),
           covariate.labels = c('During concert', 'Distance', 'Private room', 'Shared room', 'accommodates'),
           notes.label = 'Significance levels',
-          out='gen/analysis/output/regression_table.txt')
+          out='../../gen/analysis/output/regression_table.txt')
 
