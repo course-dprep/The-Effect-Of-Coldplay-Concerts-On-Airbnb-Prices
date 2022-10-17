@@ -32,11 +32,8 @@ Dallas_distance_price_graph <- ggplot(Dallas_cleaned %>% filter(price < 9999) %>
 
 # create bar graph with differences in price for different room types for Dallas
 Dallas_room_type_graph <- Dallas_cleaned %>% 
-  group_by(room_type) %>%
-  summarise(mean_price = mean(price, na.rm = TRUE)) %>%
-  filter(DuringConcert) %>% filter(price < 9999) %>% ggplot(aes(x = room_type, y = mean_price)) + 
+  filter(DuringConcert) %>% filter(price < 9999) %>% ggplot(aes(x = room_type, y = mean(price))) +
   geom_bar(stat = "identity", fill = 'red')
-
 
 
 #############Mexico####################
@@ -55,9 +52,7 @@ Mexico_distance_price_graph <- ggplot(Mexico_cleaned %>% filter(price < 9999) %>
 
 # create bar graph with differences in price for different room types for Mexico
 Mexico_room_type_graph <- Mexico_cleaned %>% 
-  group_by(Room_type) %>%
-  summarise(mean_price = mean(price, na.rm = TRUE)) %>%
-  filter(DuringConcert) %>% filter(price < 9999) %>% ggplot(aes(x = room_type, y = mean_price)) + 
+  filter(DuringConcert) %>% filter(price < 9999) %>% ggplot(aes(x = room_type, y = mean(price))) + 
   geom_bar(stat = "identity", fill = 'green')
 
 ###########Chicago########################
@@ -76,9 +71,7 @@ Chicago_distance_price_graph <- ggplot(Chicago_cleaned %>% filter(price < 9999) 
 
 # create bar graph with differences in price for different room types for Chicago
 Chicago_room_type_graph <- Chicago_cleaned %>% 
-  group_by(room_type) %>%
-  summarise(mean_price = mean(price, na.rm = TRUE)) %>%
-  filter(DuringConcert) %>% filter(price < 9999) %>% ggplot(aes(x = room_type, y = mean_price)) + 
+  filter(DuringConcert) %>% filter(price < 9999) %>% ggplot(aes(x = room_type, y = mean(price))) + 
   geom_bar(stat = 'identity', fill = 'blue')
 
 
