@@ -1,6 +1,6 @@
-# "Music of the Spheres": The effect of big events on Airbnb prices.
+# "Music of the Spheres": The effect of Coldplay concerts on Airbnb prices.
 
-To what extent are Airbnb prices affected by big events and are roomtype and distance of influence?
+To what extent are Airbnb prices affected by Coldplay concerts and are roomtype and distance of influence?
 
 ![](https://bestmusicsheet.com/wp-content/uploads/2021/11/Coldplay-World-Concert-Tour-in-2022-3.jpeg)
 
