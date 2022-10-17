@@ -4,14 +4,14 @@ library(readr)
 library(data.table)
 
 # Load datasets
-Dallas_listings <- read_csv('../../data/Dallas/Dallas_listings.csv')
-Dallas_reviews <- read_csv('../../data/Dallas/Dallas_reviews.csv')
+Dallas_listings <- read_csv('data/Dallas/Dallas_listings.csv')
+Dallas_reviews <- read_csv('data/Dallas/Dallas_reviews.csv')
 
-Chicago_listings <- read_csv('../../data/Chicago/Chicago_listings.csv')
-Chicago_reviews <- read_csv('../../data/Chicago/Chicago_reviews.csv')
+Chicago_listings <- read_csv('data/Chicago/Chicago_listings.csv')
+Chicago_reviews <- read_csv('data/Chicago/Chicago_reviews.csv')
 
-Mexico_listings <- read_csv('../../data//Mexico/Mexico_listings.csv')
-Mexico_reviews <- read_csv('../../data/Mexico/Mexico_reviews.csv')
+Mexico_listings <- read_csv('data//Mexico/Mexico_listings.csv')
+Mexico_reviews <- read_csv('data/Mexico/Mexico_reviews.csv')
 
 
 #rename columns to 'Identifier' and join Dallas
@@ -38,6 +38,6 @@ Mexico_listings <- Mexico_listings %>%
 
 Mexico_merged <- left_join(Mexico_listings, Mexico_reviews, by = 'Identifier')
 
-fwrite(Mexico_merged, file = "../../data/Mexico/Mexico_merged.csv", sep = ",", quote = TRUE)
-fwrite(Dallas_merged, file = "../../data/Dallas/Dallas_merged.csv", sep = ",", quote = TRUE)
-fwrite(Chicago_merged, file = "../../data/Chicago/Chicago_merged.csv", sep = ",", quote = TRUE)
+fwrite(Mexico_merged, file = "data/Mexico/Mexico_merged.csv", sep = ",", quote = TRUE)
+fwrite(Dallas_merged, file = "data/Dallas/Dallas_merged.csv", sep = ",", quote = TRUE)
+fwrite(Chicago_merged, file = "data/Chicago/Chicago_merged.csv", sep = ",", quote = TRUE)
