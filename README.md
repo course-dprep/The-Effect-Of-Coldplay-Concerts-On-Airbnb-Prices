@@ -32,11 +32,19 @@ The directory structure is as follows:
 ├── data
 ├── gen
 |   ├── output
-|   ├── temp         
+|       ├── graph
+|          ├── Chicago
+|          ├── Mexico
+|          ├── regression
+|   ├── temp      
+|       ├── Dallas
+|       ├── Chicago
+|       ├── Mexico
 ├── .gitignore
 ├── README.md
 ├── RMarkdown.Rmd
 └── Makefile
+
 ```
 
 ## Running instructions
