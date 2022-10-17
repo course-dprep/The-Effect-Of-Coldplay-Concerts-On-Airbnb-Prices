@@ -30,7 +30,7 @@ The directory structure is as follows:
 |       ├── makefile
 |       ├── merge_data.R
 ├── data
-|   gen
+├── gen
 |   ├── output
 |   ├── temp         
 ├── .gitignore
