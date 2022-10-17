@@ -29,10 +29,14 @@ The directory structure is as follows:
 |       ├── download_data.R
 |       ├── makefile
 |       ├── merge_data.R
+├── ├── data
+|   ├── gen
+|       ├── output
+|       ├── temp         
 ├── .gitignore
 ├── README.md
 ├── RMarkdown.Rmd
-└──  Makefile
+└── Makefile
 ```
 
 ## Running instructions
