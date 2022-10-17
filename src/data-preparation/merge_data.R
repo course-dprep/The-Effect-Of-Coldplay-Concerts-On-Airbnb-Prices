@@ -3,6 +3,10 @@ library(dplyr)
 library(readr)
 library(data.table)
 
+dir.create('../../gen/temp/Mexico')
+dir.create('../../gen/temp/Dallas')
+dir.create('../../gen/temp/Chicago')
+
 # Load datasets
 Dallas_listings <- read_csv('../../data/Dallas/Dallas_listings.csv')
 Dallas_reviews <- read_csv('../../data/Dallas/Dallas_reviews.csv')
@@ -38,6 +42,6 @@ Mexico_listings <- Mexico_listings %>%
 
 Mexico_merged <- left_join(Mexico_listings, Mexico_reviews, by = 'Identifier')
 
-fwrite(Mexico_merged, file = "../../data/Mexico/Mexico_merged.csv", sep = ",", quote = TRUE)
-fwrite(Dallas_merged, file = "../../data/Dallas/Dallas_merged.csv", sep = ",", quote = TRUE)
-fwrite(Chicago_merged, file = "../../data/Chicago/Chicago_merged.csv", sep = ",", quote = TRUE)
+fwrite(Mexico_merged, file = "../../gen/temp/Mexico/Mexico_merged.csv", sep = ",", quote = TRUE)
+fwrite(Dallas_merged, file = "../../gen/temp/Dallas/Dallas_merged.csv", sep = ",", quote = TRUE)
+fwrite(Chicago_merged, file = "../../gen/temp/Chicago/Chicago_merged.csv", sep = ",", quote = TRUE)
