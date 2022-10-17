@@ -78,64 +78,49 @@ After retrieving the data, we continued to merge the 'listing' and 'reviews' dat
 # Load datasets
 Dallas_listings <- read_csv('data/Dallas/Dallas_listings.csv')
 Dallas_reviews <- read_csv('data/Dallas/Dallas_reviews.csv')
-
 Chicago_listings <- read_csv('data/Chicago/Chicago_listings.csv')
 Chicago_reviews <- read_csv('data/Chicago/Chicago_reviews.csv')
-
 Mexico_listings <- read_csv('data//Mexico/Mexico_listings.csv')
 Mexico_reviews <- read_csv('data/Mexico/Mexico_reviews.csv')
-
-
 #rename columns to 'Identifier' and join Dallas
 Dallas_reviews <- Dallas_reviews %>% 
   rename('Identifier' = listing_id)
 Dallas_listings <- Dallas_listings %>%
   rename('Identifier' = id)
-
 Dallas_merged <- left_join(Dallas_listings, Dallas_reviews, by = 'Identifier') #have to check which join we want
-
 #rename columns to 'Identifier' and join Chicago 
 Chicago_reviews <- Chicago_reviews %>%
   rename('Identifier' = listing_id)
 Chicago_listings <- Chicago_listings %>%
   rename('Identifier' = id)
-
 Chicago_merged <- left_join(Chicago_listings, Chicago_reviews, by = 'Identifier')
-
 #rename columns to 'Identifier' and join Mexico
 Mexico_reviews <- Mexico_reviews %>%
   rename('Identifier' = listing_id)
 Mexico_listings <- Mexico_listings %>%
   rename('Identifier' = id)
-
 Mexico_merged <- left_join(Mexico_listings, Mexico_reviews, by = 'Identifier')
-
 fwrite(Mexico_merged, file = "data/Mexico/Mexico_merged.csv", sep = ",", quote = TRUE)
 fwrite(Dallas_merged, file = "data/Dallas/Dallas_merged.csv", sep = ",", quote = TRUE)
 fwrite(Chicago_merged, file = "data/Chicago/Chicago_merged.csv", sep = ",", quote = TRUE)
-
 ```
 
 ```{R clean data, include=FALSE}
-
 #subset, filter for dates one month before and after the concert for Mexico and filter out price outliers.
 Mexico_cleaned <- Mexico_merged %>% 
   select(Identifier, latitude, longitude, room_type, accommodates, price, date) %>%
   filter(Mexico_merged$date > "2022-03-03" & Mexico_merged$date < "2022-05-07") %>%
   filter(price < 9999)
-
 #subset, filter for dates one month before and after the concert for Dallas and filter out price outliers..
 Dallas_cleaned <- Dallas_merged %>%
   select(Identifier, latitude, longitude, room_type, accommodates, price, date) %>%
   filter(Dallas_merged$date > "2022-04-06" & Dallas_merged$date < "2022-06-06") %>%
   filter(price < 9999)
-
 #subset, filter for dates one month before and after the concert for Chicago and filter out price outliers..
 Chicago_cleaned <- Chicago_merged %>%
   select(Identifier, latitude, longitude, room_type, accommodates, price, date) %>%
   filter(Chicago_merged$date > "2022-04-28" & Chicago_merged$date < "2022-06-29") %>%
   filter(price < 9999)
-
 #calculate distance column 
 earth.dist <- function (long1, lat1, long2, lat2)
 {
@@ -152,43 +137,34 @@ earth.dist <- function (long1, lat1, long2, lat2)
   d <- R * c
   return(d)
 }
-
 # create variables for dates during the concert and distance
-
 # Mexico (coordinates of Foro Sol are -99.052724, 19.241055)
 Mexico_cleaned$DuringConcert <- Mexico_cleaned$date == as.Date("2022-04-03") | Mexico_cleaned$date == as.Date("2022-04-04") | Mexico_cleaned$date == as.Date("2022-04-06")| Mexico_cleaned$date == as.Date("2022-04-07") 
 Mexico_cleaned$distance <- earth.dist(Mexico_cleaned$longitude, Mexico_cleaned$latitude, -99.052724, 19.241055)
-
 # Dallas (coordinates of Cotton Bowl stadium are -96.452099, 32.462819)
 Dallas_cleaned$DuringConcert <- Dallas_cleaned$date == as.Date("2022-05-06")
 Dallas_cleaned$distance <- earth.dist(Dallas_cleaned$longitude, Dallas_cleaned$latitude, -96.452099, 32.462819)
-
 # Chicago (coordinates of Soldier Field are -87.617256, 41.862366)
 Chicago_cleaned$DuringConcert <- Chicago_cleaned$date == as.Date("2022-05-28") | Chicago_cleaned$date == as.Date("2022-05-29")
 Chicago_cleaned$distance <- earth.dist(Chicago_cleaned$longitude, Chicago_cleaned$latitude, -87.617256, 41.862366)
-
 #clean price column Dallas
 Dallas_cleaned$price <- gsub('[$]', '', Dallas_cleaned$price)
 Dallas_cleaned$price <- gsub('[,]', '', Dallas_cleaned$price)
 Dallas_cleaned$price <- gsub('[.]', '', Dallas_cleaned$price)
 Dallas_cleaned$price <- as.numeric(Dallas_cleaned$price)
 Dallas_cleaned$price <- Dallas_cleaned$price / 100
-
-
 #clean price column Chicago 
 Chicago_cleaned$price <- gsub('[$]', '', Chicago_cleaned$price)
 Chicago_cleaned$price <- gsub('[,]', '', Chicago_cleaned$price)
 Chicago_cleaned$price <- gsub('[.]', '', Chicago_cleaned$price)
 Chicago_cleaned$price <- as.numeric(Chicago_cleaned$price)
 Chicago_cleaned$price <- Chicago_cleaned$price / 100
-
 #clean price column Mexico 
 Mexico_cleaned$price <- gsub('[$]', '', Mexico_cleaned$price)
 Mexico_cleaned$price <- gsub('[,]', '', Mexico_cleaned$price)
 Mexico_cleaned$price <- gsub('[.]', '', Mexico_cleaned$price)
 Mexico_cleaned$price <- as.numeric(Mexico_cleaned$price)
 Mexico_cleaned$price <- Mexico_cleaned$price / 100
-
 #write output
 fwrite(Mexico_cleaned, file = "data/Mexico/Mexico_cleaned.csv", sep = ",", quote = TRUE )
 fwrite(Dallas_cleaned, file = "data/Dallas/Dallas_cleaned.csv", sep = ",", quote = TRUE)
@@ -221,8 +197,22 @@ For every city we have done the regression. All the results of the regressions c
 
 
 The visualization of the results can be found in the plots below: 
+Chicago
+![Chicago distance to stadium with relation to price graph](gen/output/graph/Chicago/Chicago_distance_price.png)
+![Chicago mean price during concert](gen/output/graph/Chicago/Chicago_mean_price.png)
+![Chicago difference in price for room types](gen/output/graph/Chicago/Chicago_room_type.png)
+Dallas 
+![Dallas distance to stadium with relation to price graph](gen/output/graph/Dallas/Dallas_distance_price.png)
+![Dallas mean price during concert](gen/output/graph/Dallas/Dallas_mean_price.png)
+![Dallas difference in price for room types](gen/output/graph/Dallas/Dallas_room_type.png)
 
-![plot 1 chicago](gen/output/graphs/Chicago/Chicago_)
+Mexico 
+![Mexico distance to stadium with relation to price graph](gen/output/graph/Mexico/Mexico_distance_price.png)
+![Mexico mean price during concert](gen/output/graph/Mexico/Mexico_mean_price.png)
+![Mexico difference in price for room types](gen/output/graph/Mexico/Mexico_room_type.png)
+
+
+
 
 
 ### Conclusion
