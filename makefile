@@ -1,8 +1,8 @@
-all: analysis data-preparation
+all: data-preparation analysis
 
 data-preparation:
-	make –C src/data-preparation
+	make src/data-preparation
 
 analysis: data-preparation
-	make –C src/analysis
+	make src/analysis
 		
