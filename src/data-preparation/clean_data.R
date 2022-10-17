@@ -5,9 +5,9 @@ library(data.table)
 
 
 #import data 
-Mexico_merged <- read_csv("data/Mexico/Mexico_merged.csv")
-Dallas_merged <- read_csv("data/Dallas/Dallas_merged.csv")
-Chicago_merged <- read_csv("data/Chicago/Chicago_merged.csv")
+Mexico_merged <- read_csv("../../data/Mexico/Mexico_merged.csv")
+Dallas_merged <- read_csv("../../data/Dallas/Dallas_merged.csv")
+Chicago_merged <- read_csv("../../data/Chicago/Chicago_merged.csv")
 
 
 #subset, filter for dates one month before and after the concert for Mexico and filter out price outliers and filter out 'Hotel rooms' to get same type of rooms as other cities.
@@ -85,6 +85,6 @@ Mexico_cleaned$price <- as.numeric(Mexico_cleaned$price)
 Mexico_cleaned$price <- Mexico_cleaned$price / 100
 
 #write output
-fwrite(Mexico_cleaned, file = "data/Mexico/Mexico_cleaned.csv", sep = ",", quote = TRUE )
-fwrite(Dallas_cleaned, file = "data/Dallas/Dallas_cleaned.csv", sep = ",", quote = TRUE)
-fwrite(Chicago_cleaned, file = "data/Chicago/Chicago_cleaned.csv", sep = ",", quote = TRUE)
+fwrite(Mexico_cleaned, file = "../../data/Mexico/Mexico_cleaned.csv", sep = ",", quote = TRUE )
+fwrite(Dallas_cleaned, file = "../../data/Dallas/Dallas_cleaned.csv", sep = ",", quote = TRUE)
+fwrite(Chicago_cleaned, file = "../../data/Chicago/Chicago_cleaned.csv", sep = ",", quote = TRUE)
