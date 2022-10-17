@@ -1,4 +1,4 @@
-all: analysis data-preparation
+all: paper analysis data-preparation 
 
 data-preparation:
 	 make -C src/data-preparation
