@@ -222,18 +222,18 @@ For every city we have done the regression. All the results of the regressions c
 
 The visualization of the results can be found in the plots below: 
 Chicago
-![Chicago distance to stadium with relation to price graph](gen/output/graph/Chicago/Chicago_distance_price_graph.png)
-![Chicago mean price during concert](gen/output/graph/Chicago/Chicago_mean_price_graph.png)
-![Chicago difference in price for room types](gen/output/graph/Chicago/Chicago_room_type_graph.png)
+![Chicago distance to stadium with relation to price graph](gen/output/graph/Chicago/Chicago_distance_price.png)
+![Chicago mean price during concert](gen/output/graph/Chicago/Chicago_mean_price.png)
+![Chicago difference in price for room types](gen/output/graph/Chicago/Chicago_room_type.png)
 Dallas 
-![Dallas distance to stadium with relation to price graph](gen/output/graph/Dallas/Dallas_distance_price_graph.png)
-![Dallas mean price during concert](gen/output/graph/Dallas/Dallas_mean_price_graph.png)
-![Dallas difference in price for room types](gen/output/graph/Dallas/Dallas_room_type_graph.png)
+![Dallas distance to stadium with relation to price graph](gen/output/graph/Dallas/Dallas_distance_price.png)
+![Dallas mean price during concert](gen/output/graph/Dallas/Dallas_mean_price.png)
+![Dallas difference in price for room types](gen/output/graph/Dallas/Dallas_room_type.png)
 
 Mexico 
-![Mexico distance to stadium with relation to price graph](gen/output/graph/Mexico/Mexico_distance_price_graph.png)
-![Mexico mean price during concert](gen/output/graph/Mexico/Mexico_mean_price_graph.png)
-![Mexico difference in price for room types](gen/output/graph/Mexico/Mexico_room_type_graph.png)
+![Mexico distance to stadium with relation to price graph](gen/output/graph/Mexico/Mexico_distance_price.png)
+![Mexico mean price during concert](gen/output/graph/Mexico/Mexico_mean_price.png)
+![Mexico difference in price for room types](gen/output/graph/Mexico/Mexico_room_type.png)
 
 
 
