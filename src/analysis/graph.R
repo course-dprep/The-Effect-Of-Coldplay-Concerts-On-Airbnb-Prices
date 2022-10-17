@@ -76,6 +76,13 @@ Chicago_room_type_graph <- Chicago_cleaned %>%
   geom_bar(stat = 'identity', fill = 'blue')
 
 
-ggexport(Chicago_mean_price_graph, Chicago_distance_price_graph, Chicago_room_type_graph, filename = '../../gen/output/graph/Chicago/Chicago_plots.pdf')
-ggexport(Dallas_mean_price_graph, Dallas_distance_price_graph, Dallas_room_type_graph, filename = '../../gen/output/graph/Dallas/Dallas_plots.pdf')
-ggexport(Mexico_mean_price_graph, Mexico_distance_price_graph, Mexico_room_type_graph, filename = '../../gen/output/graph/Mexico/Mexico_plots.pdf')
+ggexport(Chicago_mean_price_graph, filename = '../../gen/output/graph/Chicago/Chicago_mean_price_graph.png')
+ggexport(Dallas_mean_price_graph, filename = '../../gen/output/graph/Dallas/Dallas_mean_price_graph.png')
+ggexport(Mexico_mean_price_graph, filename = '../../gen/output/graph/Mexico/Mexico_mean_price_graph.png')
+ggexport(Chicago_distance_price_graph, filename = '../../gen/output/graph/Chicago/Chicago_distance_price_graph.png')
+ggexport(Dallas_distance_price_graph, filename = '../../gen/output/graph/Dallas/Dallas_distance_price_graph.png')
+ggexport(Mexico_distance_price_graph, filename = '../../gen/output/graph/Mexico/Mexico_distance_price_graph.png')
+ggexport(Chicago_room_type_graph, filename = '../../gen/output/graph/Chicago/Chicago_room_type_graph.png')
+ggexport(Dallas_room_type_graph, filename = '../../gen/output/graph/Dallas/Dallas_room_type_graph.png')
+ggexport(Mexico_room_type_graph, filename = '../../gen/output/graph/Mexico/Mexico_room_type_graph.png')
+
