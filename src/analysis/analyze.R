@@ -6,7 +6,8 @@ library(readr)
 library(data.table)
 library(stargazer)
 
-
+#create directories 
+dir.create('../../gen/output')
 dir.create('../../gen/output/regression')
 
 #import data 

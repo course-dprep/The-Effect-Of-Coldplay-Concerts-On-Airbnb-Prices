@@ -5,6 +5,8 @@ library(dplyr)
 library(ggpubr)
 
 #create directory
+dir.create('../../gen/output')
+dir.create('../../gen/output/graphs')
 dir.create('../../gen/output/graph/Dallas')
 dir.create('../../gen/output/graph/Chicago')
 dir.create('../../gen/output/graph/Mexico')

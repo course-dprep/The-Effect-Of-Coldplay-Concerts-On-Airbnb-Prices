@@ -3,6 +3,8 @@ library(dplyr)
 library(readr)
 library(data.table)
 
+dir.create('../../gen')
+dir.create('../../gen/temp')
 dir.create('../../gen/temp/Mexico')
 dir.create('../../gen/temp/Dallas')
 dir.create('../../gen/temp/Chicago')
