@@ -7,7 +7,7 @@ library(data.table)
 library(stargazer)
 
 
-dir.create('../../gen/regression')
+dir.create('../../gen/output/regression')
 
 #import data 
 Mexico_cleaned <- read_csv("../../data/Mexico/Mexico_cleaned.csv")
@@ -39,5 +39,5 @@ stargazer(Mexico_reg, Dallas_reg, Chicago_reg,
           column.labels = c('Mexico', 'Dallas', "Chicago"),
           covariate.labels = c('During concert', 'Distance', 'Private room', 'Shared room', 'accommodates'),
           notes.label = 'Significance levels',
-          out='../../gen/regression/regression_table.txt')
+          out='../../gen/output/regression/regression_table.txt')
 

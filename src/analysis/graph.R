@@ -5,10 +5,9 @@ library(dplyr)
 library(ggpubr)
 
 #create directory
-dir.create('../../gen/graph')
-dir.create('../../gen/graph/Dallas')
-dir.create('../../gen/graph/Chicago')
-dir.create('../../gen/graph/Mexico')
+dir.create('../../gen/output/graph/Dallas')
+dir.create('../../gen/output/graph/Chicago')
+dir.create('../../gen/output/graph/Mexico')
 
 
 Mexico_cleaned <- read_csv("../../data/Mexico/Mexico_cleaned.csv")
@@ -75,6 +74,6 @@ Chicago_room_type_graph <- Chicago_cleaned %>%
   geom_bar(stat = 'identity', fill = 'blue')
 
 
-ggexport(Chicago_mean_price_graph, Chicago_distance_price_graph, Chicago_room_type_graph, filename = '../../gen/graph/Chicago/Chicago_plots.pdf')
-ggexport(Dallas_mean_price_graph, Dallas_distance_price_graph, Dallas_room_type_graph, filename = '../../gen/graph/Dallas/Dallas_plots.pdf')
-ggexport(Mexico_mean_price_graph, Mexico_distance_price_graph, Mexico_room_type_graph, filename = '../../gen/graph/Mexico/Mexico_plots.pdf')
+ggexport(Chicago_mean_price_graph, Chicago_distance_price_graph, Chicago_room_type_graph, filename = '../../gen/output/graph/Chicago/Chicago_plots.pdf')
+ggexport(Dallas_mean_price_graph, Dallas_distance_price_graph, Dallas_room_type_graph, filename = '../../gen/output/graph/Dallas/Dallas_plots.pdf')
+ggexport(Mexico_mean_price_graph, Mexico_distance_price_graph, Mexico_room_type_graph, filename = '../../gen/output/graph/Mexico/Mexico_plots.pdf')

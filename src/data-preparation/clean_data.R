@@ -5,9 +5,9 @@ library(data.table)
 
 
 #import data 
-Mexico_merged <- read_csv("../../temp/Mexico/Mexico_merged.csv")
-Dallas_merged <- read_csv("../../temp/Dallas/Dallas_merged.csv")
-Chicago_merged <- read_csv("../../temp/Chicago/Chicago_merged.csv")
+Mexico_merged <- read_csv("../../gen/temp/Mexico/Mexico_merged.csv")
+Dallas_merged <- read_csv("../../gen/temp/Dallas/Dallas_merged.csv")
+Chicago_merged <- read_csv("../../gen/temp/Chicago/Chicago_merged.csv")
 
 
 #subset, filter for dates one month before and after the concert for Mexico and filter out price outliers and filter out 'Hotel rooms' to get same type of rooms as other cities.
